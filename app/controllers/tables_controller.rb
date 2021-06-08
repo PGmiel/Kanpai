@@ -1,4 +1,5 @@
 class TablesController < ApplicationController
+
   def show
     @table = Table.find(params[:id])
     @order = @table.orders.find_by(status: "pending")
@@ -11,3 +12,4 @@ class TablesController < ApplicationController
       redirect_to order_path(@order)
     end
   end
+end

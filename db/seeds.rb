@@ -8,6 +8,7 @@
 require 'faker'
 
 MenuItem.destroy_all
+Booking.destroy_all
 Menu.destroy_all
 Booking.destroy_all
 Table.destroy_all
