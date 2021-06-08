@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(version: 2021_06_08_093217) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"
     t.string "last_name"
-    t.string "status_owner"
+    t.string "status_owner" #t.boolean "status-owner", default => false linked to devise/registration/check box
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
