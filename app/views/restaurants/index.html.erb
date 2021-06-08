@@ -1,6 +1,6 @@
 <div class="container">
   <% @restaurants.each do |restaurant| %>
-    <%= restaurant.name %>
+    <%= link_to restaurant.name, restaurant_path(restaurant) %>
     <%= link_to "Book this restaurant", new_restaurant_booking_path(restaurant), class: "btn btn-warning" %>
   <% end %>
 </div>
