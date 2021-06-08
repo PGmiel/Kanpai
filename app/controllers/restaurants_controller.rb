@@ -8,6 +8,7 @@ class RestaurantsController < ApplicationController
     else
       @restaurants = Restaurant.all
     end
+    @booking = Booking.new
   end
 
   def show
