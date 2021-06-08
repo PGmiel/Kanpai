@@ -1,5 +1,30 @@
 <div class="container">
+    <%= form_tag restaurants_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search here!"
+    %>
+    <%= submit_tag "Submit", class: "btn btn-warning" %>
+  <% end %>
+</div>
+<div class="container">
   <% @restaurants.each do |restaurant| %>
+
+    <ul class="list-inline">
+      <li>Name: <%= restaurant.name %></li>
+      <li>Address: <%= restaurant.address %></li>
+      <li>Owner: <%= restaurant.user.full_name %></li>
+      <li>Tables: <%= restaurant.tables.count %></li>
+      Available:
+      <li><% restaurant.menu_items.each do |item| %></li>
+        <ul>
+          <li><%= item.item_name %> - <%= item.price %> € - <%= item.category %></li>
+        </ul>
+          <% end %>
+      <li><%= link_to "Book this restaurant", new_restaurant_booking_path(restaurant), class: "btn btn-warning" %></li>
+    </ul>
+
     <%= link_to restaurant.name, restaurant_path(restaurant) %>
     <%= restaurant.tables.count%>
     <% x = 0%>
