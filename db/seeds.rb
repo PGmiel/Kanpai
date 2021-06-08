@@ -13,15 +13,15 @@ puts "Creating a Restaurant"
     name: "Restaurant #{rand(1..5)}",
     latitude: 0,
     longitude: 0,
-    user_id: 2
+    user_id: 2,
   )
-
-puts "Creating 5 Tables"
-5.times do
-  table = Table.create!(
-    number_of_table: rand(1..8),
-    capacity: rand(1..4),
-    status: "available",
-    restaurant_id: 4
-  )
-end
+  #   5.times do
+  #     n = 1
+  #     table = Table.create!(
+  #       number_of_table: n,
+  #       capacity: rand(1..4),
+  #       status: "available",
+  #     )
+  #    n += 1
+  #   end
+  # )
