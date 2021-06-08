@@ -32,14 +32,14 @@ puts "Creating a Restaurant"
 
 
 puts "Creating Tables"
-5.times do |n|
+  5.times do |n|
     table = Table.create!(
       number_of_table: n + 1,
       capacity: rand(1..12),
       status: "available",
       restaurant: restaurant
     )
-end
+  end
 
 puts "Creating 1 Menu"
   menu = Menu.create!(
