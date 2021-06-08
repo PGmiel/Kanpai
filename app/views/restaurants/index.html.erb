@@ -21,7 +21,7 @@
           <div class="modal-body">
            <%= simple_form_for [restaurant, @booking] do |f| %>
               <%= f.input :datetime %>
-              <%= f.input :number_of_customers,as: :select, collection: [0, 1, 2, 3, 4, 5] %>
+              <%= f.input :number_of_customers,as: :select, collection: [1, 2, 3, 4, 5] %>
               <%= f.submit "Submit booking", class: "btn btn-primary" %>
           <% end %>
          </div>
