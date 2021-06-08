@@ -1,0 +1,12 @@
+<div class="container">
+  <% @bookings.each do |booking| %>
+    <% if booking.user_id == current_user.id  %>
+      <ul>
+        <li><%= booking.datetime %></li>
+        <li><%= booking.status %></li>
+        <li><%= booking.table.restaurant.name %></li>
+        <li><%= booking.table.restaurant.address %></li>
+      </ul>
+    <% end %>
+  <% end %>
+</div>

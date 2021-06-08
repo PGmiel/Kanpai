@@ -2,7 +2,13 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update]
 
   def index
-    @restaurants = Restaurant.all
+    if params[:query].present?
+      @restaurants = Restaurant.general_search(params[:query])
+      # @restaurants = @restaurants.joins(:tables).where("tables.status = ?", "available")
+    else
+      @restaurants = Restaurant.all
+    end
+    @booking = Booking.new
   end
 
   def show

@@ -1,5 +1,21 @@
 class Restaurant < ApplicationRecord
   belongs_to :user
   has_many :tables
+  has_many :bookings, through: :tables
   has_many :menus
+  has_many :menu_items, through: :menus
+  include PgSearch::Model
+  pg_search_scope :general_search,
+    against: [:name, :address],
+    associated_against: {
+      menu_items: [:category]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
+
+  def find_table(datetime, number_of_customers)
+    available_tables = tables.where("capacity >= ?", number_of_customers).order(:capacity)
+    available_table = available_tables.detect { |table| table.bookings.where(datetime: datetime).empty? }
+  end
 end

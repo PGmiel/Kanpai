@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources :restaurants do
     resources :bookings
   end
+  
   resources :tables, only: [:show]
   resources :orders, only: [:view, :show]
+
+  get "bookings", to: "bookings#user_bookings"
+  get 'dashboard', to: 'pages#dashboard'
+
 end

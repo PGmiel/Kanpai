@@ -19,6 +19,11 @@
       <%= f.input :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
+      <%= f.input :status_owner,
+                  hint: ("Mark box if you own a bar/restaurant") %>
+
+
+
     </div>
     <div class="form-actions">
       <%= f.button :submit, "Sign up" %>

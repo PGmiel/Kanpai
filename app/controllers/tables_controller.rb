@@ -11,4 +11,3 @@ class TablesController < ApplicationController
       redirect_to order_path(@order)
     end
   end
-end
