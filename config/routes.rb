@@ -7,14 +7,9 @@ Rails.application.routes.draw do
     resources :tables, only: [ :index, :new, :create ]
   end
 
-  resources :tables do
-    resources :orders, only: [ :index, :new, :create ]
-  end
+  resources :tables, only: [:show]
+  resources :orders, only: [:view, :show]
 
-  resources :orders, only: [ :show, :edit, :update, :destroy ] do
-    resources :order_items, only: [ :index, :new, :create ]
-  end
-
-  resources :menu_items
-  resources :order_items
+  get "bookings", to: "bookings#user_bookings"
+  get 'dashboard', to: 'pages#dashboard'
 end
