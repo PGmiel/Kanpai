@@ -232,10 +232,7 @@ GEM
 PLATFORMS
   x86_64-darwin-17
   x86_64-darwin-20
-<<<<<<< HEAD
-=======
   x86_64-linux
->>>>>>> 2a3dd309550ce23c6cee1a8808637a52603152ce
 
 DEPENDENCIES
   autoprefixer-rails (= 10.2.5)
