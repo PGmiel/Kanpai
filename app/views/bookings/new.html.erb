@@ -6,10 +6,11 @@
       <li>Number: <%= table.number_of_table %></li>
     </ul>
   <% end %>
+  <h2>Booking status: <%= @booking.status %></h2>
+  <h2>Owner: <%= @restaurant.user.full_name %></h2>
   <%= simple_form_for [ @restaurant, @booking ] do |f| %>
     <%= f.input :datetime %>
     <%= f.input :number_of_customers,as: :select, collection: [0, 1, 2, 3, 4, 5] %>
-    <%= f.input :table_id %>
     <%= f.submit "Submit booking", class: "btn btn-primary" %>
   <% end %>
 </div>

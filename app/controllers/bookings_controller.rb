@@ -1,22 +1,35 @@
 class BookingsController < ApplicationController
 
+  def show
+    @booking = Booking.find(params[:id])
+  end
+
   def new
     @booking = Booking.new
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @tables = Table.all
   end
 
   def create
     @booking = Booking.new(booking_params)
     @restaurant = Restaurant.find(params[:restaurant_id])
-    @booking.restaurant = @restaurant
+    table = @restaurant.find_table(@booking.datetime, @booking.number_of_customers)
+    @booking.table = table
     @booking.user = current_user
-    redirect to root_path
+    @booking.status = "booked"
+    @booking.save!
+    redirect_to root_path
+  end
+
+  def update
+  end
+
+  def user_bookings
+    @bookings = Booking.all
   end
 
   private
 
   def booking_params
-    params.require(:booking).permit(:datetime, :number_of_customers)
+    params.require(:booking).permit(:datetime, :number_of_customers, :status)
   end
 end
