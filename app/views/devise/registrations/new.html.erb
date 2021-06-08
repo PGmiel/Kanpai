@@ -19,7 +19,8 @@
       <%= f.input :password_confirmation,
                   required: true,
                   input_html: { autocomplete: "new-password" } %>
-      <%= f.check_box :status_owner %> <%# schema changing column of user table, status become a boolean%>
+      <%= f.input :status_owner,
+                  hint: ("Mark box if you own a bar/restaurant") %>
 
 
 
