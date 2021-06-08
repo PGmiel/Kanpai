@@ -1,7 +1,16 @@
 <div class="container">
   <% @restaurants.each do |restaurant| %>
     <%= link_to restaurant.name, restaurant_path(restaurant) %>
-
+    <%= restaurant.tables.count%>
+    <% x = 0%>
+    <% restaurant.tables.each do |table|%>
+      <%if table.status != "booked"%>
+        <% x += 1%>
+      <%end%>
+      
+    <%end%>
+    <%="#{x} tables available"%>
+    
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
       book a table here

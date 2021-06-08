@@ -1,3 +1,2 @@
 class TablesController < ApplicationController
-
 end
