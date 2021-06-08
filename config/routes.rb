@@ -7,4 +7,5 @@ Rails.application.routes.draw do
     resources :bookings
   end
   get "bookings", to: "bookings#user_bookings"
+  get 'dashboard', to: 'pages#dashboard'
 end

@@ -5,23 +5,58 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+MenuItem.destroy_all
+Menu.destroy_all
 Table.destroy_all
 Restaurant.destroy_all
+User.destroy_all
+
+puts "creating a User"
+  user = User.create!(
+    first_name: 'Johnny',
+    last_name: 'Bravo',
+    email: 'johnny.bravo@cn.com',
+    password: "123123",
+    status_owner: 'owner'
+  )
 
 puts "Creating a Restaurant"
   restaurant = Restaurant.create!(
-    name: "Restaurant #{rand(1..5)}",
-    latitude: 0,
-    longitude: 0,
-    user_id: 2,
+    name: Faker::Restaurant.name,
+    latitude: rand(50..51),
+    longitude: rand(4..5),
+    user: user,
   )
-  #   5.times do
-  #     n = 1
-  #     table = Table.create!(
-  #       number_of_table: n,
-  #       capacity: rand(1..4),
-  #       status: "available",
-  #     )
-  #    n += 1
-  #   end
-  # )
+
+
+puts "Creating Tables"
+5.times do |n|
+    table = Table.create!(
+      number_of_table: n + 1,
+      capacity: rand(1..12),
+      status: "available",
+      restaurant: restaurant
+    )
+end
+
+puts "Creating 1 Menu"
+  menu = Menu.create!(
+    restaurant: restaurant
+  )
+
+puts "Creating Menu Items"
+  10.times do
+    menu_items = MenuItem.create!(
+      item_name: [Faker::Food.dish, Faker::Dessert.variety, Faker::Beer.name].sample ,
+      category: ["food", "dessert", "drink"].sample,
+      price: rand(2..15),
+      menu: menu
+  )
+  end
+
+
+
+
+
