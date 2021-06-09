@@ -10,19 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_143527) do
+ActiveRecord::Schema.define(version: 2021_06_09_123900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "bookings", force: :cascade do |t|
-    t.datetime "datetime"
     t.integer "number_of_customers"
     t.bigint "table_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "status"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
     t.index ["table_id"], name: "index_bookings_on_table_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -84,6 +85,17 @@ ActiveRecord::Schema.define(version: 2021_06_08_143527) do
     t.index ["user_id"], name: "index_restaurants_on_user_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.string "content"
+    t.integer "rating"
+    t.bigint "restaurant_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
   create_table "tables", force: :cascade do |t|
     t.integer "number_of_table"
     t.integer "capacity"
@@ -105,6 +117,7 @@ ActiveRecord::Schema.define(version: 2021_06_08_143527) do
     t.string "first_name"
     t.string "last_name"
     t.boolean "status_owner", default: false
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -117,5 +130,7 @@ ActiveRecord::Schema.define(version: 2021_06_08_143527) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "tables"
   add_foreign_key "restaurants", "users"
+  add_foreign_key "reviews", "restaurants"
+  add_foreign_key "reviews", "users"
   add_foreign_key "tables", "restaurants"
 end

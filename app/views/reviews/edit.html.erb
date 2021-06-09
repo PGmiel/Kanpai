@@ -1,0 +1,11 @@
+
+    <%= simple_form_for [ @restaurant, @review ] do |f| %>
+      <%= f.input :content %>
+      <%= f.input :rating, as: :select, collection: [0, 1, 2, 3, 4, 5] %>
+      <%= f.submit "Update", class: "btn btn-dark" %>
+    <% end %>
+
+    <%= link_to 'Delete', restaurant_review_path(@review),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %> |
+      <%= link_to 'Cancel', :back %>

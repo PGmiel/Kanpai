@@ -12,12 +12,17 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @restaurant = Restaurant.find(params[:restaurant_id])
-    table = @restaurant.find_table(@booking.datetime, @booking.number_of_customers)
+    table = @restaurant.find_table(@booking.starts_at, @booking.ends_at, @booking.number_of_customers)
     @booking.table = table
     @booking.user = current_user
     @booking.status = "booked"
-    @booking.save!
-    redirect_to root_path
+    if @booking.save
+      CheckTableStatusJob.set(wait_until: @booking.starts_at).perform_later(table.id) # or (table_id)
+      redirect_to restaurants_path
+    else
+      flash[:notice] = "Issue"
+      redirect_to restaurants_path
+    end
   end
 
   def update
@@ -30,6 +35,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:datetime, :number_of_customers, :status)
+    params.require(:booking).permit(:ends_at, :starts_at, :number_of_customers, :status)
   end
 end

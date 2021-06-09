@@ -5,11 +5,19 @@ Rails.application.routes.draw do
   resources :restaurants do
     resources :bookings, only: [ :index, :new, :create ]
     resources :tables, only: [ :index, :new, :create ]
+    resources :reviews, only: [ :new, :create, :edit, :update, :show, :destroy]
   end
 
   resources :tables, only: [:show]
-  resources :orders, only: [:view, :show]
+  resources :orders, only: [:view, :show] do
+    resources :order_items, only: [:create]
+  end
 
   get "bookings", to: "bookings#user_bookings"
   get 'dashboard', to: 'pages#dashboard'
+
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end

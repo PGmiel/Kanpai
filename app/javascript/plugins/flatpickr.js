@@ -2,11 +2,20 @@ import flatpickr from "flatpickr";
 
 const initFlatpickr = () => {
   flatpickr(".datepicker", {
-    enableTime: true,
-    dateFormat: "Y-m-d H:i",
     altInput: true,
     allowInput: true,
+    enableTime: true,
+    dateFormat: "H:i",
+    time_24hr: true
   });
+  // ".timepicker", {
+  //   altInput: true,
+  //   allowInput: true,
+  //   noCalendar: true
+  //   enableTime: true,
+  //   dateFormat: "H:i",
+  //   time_24hr: true
+  // \});
 }
 
 export { initFlatpickr };
