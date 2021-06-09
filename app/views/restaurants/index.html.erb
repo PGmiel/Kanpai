@@ -1,3 +1,4 @@
+<!-- Filter -->
 <div class="container">
     <%= form_tag restaurants_path, method: :get do %>
     <%= text_field_tag :query,
@@ -8,66 +9,60 @@
     <%= submit_tag "Submit", class: "btn btn-warning" %>
   <% end %>
 </div>
+<!-- List of restaurants -->
 <div class="container">
   <% @restaurants.each do |restaurant| %>
-
     <ul class="list-inline">
       <li>Name: <%= restaurant.name %></li>
       <li>Address: <%= restaurant.address %></li>
       <li>Owner: <%= restaurant.user.full_name %></li>
-      <li>Tables: <%= restaurant.tables.count %></li>
-      Available:
+      <li>
+        <% x = 0%>
+        <% restaurant.tables.each do |table|%>
+          <%if table.status != "booked"%>
+            <% x += 1%>
+          <%end%>
+        <%end%>
+        <%="#{x} tables available"%>
+      </li>
+      To buy:
       <li><% restaurant.menu_items.each do |item| %></li>
         <ul>
           <li><%= item.item_name %> - <%= item.price %> € - <%= item.category %></li>
         </ul>
           <% end %>
-      <li><%= link_to "Book this restaurant", new_restaurant_booking_path(restaurant), class: "btn btn-warning" %></li>
     </ul>
-
-    <%= link_to restaurant.name, restaurant_path(restaurant) %>
-    <%= restaurant.tables.count%>
-    <% x = 0%>
-    <% restaurant.tables.each do |table|%>
-      <%if table.status != "booked"%>
-        <% x += 1%>
-      <%end%>
-      
-    <%end%>
-    <%="#{x} tables available"%>
-    
-    <!-- Button trigger modal -->
+<!-- Button trigger modal -->
     <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
       book a table here
     </button>
-
     <div class="container">
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Book a table</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Book a table</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for [restaurant, @booking] do |f| %>
+                <%= f.input :datetime, as: :string, required: false, input_html: {class: "datepicker"} %>
+                <%= f.input :number_of_customers,as: :select, collection: [1, 2, 3, 4, 5] %>
+                <%= f.submit "Submit booking", class: "btn btn-warning" %>
+              <% end %>
+            </div>
           </div>
-          <div class="modal-body">
-           <%= simple_form_for [restaurant, @booking] do |f| %>
-              <%= f.input :datetime %>
-              <%= f.input :number_of_customers,as: :select, collection: [1, 2, 3, 4, 5] %>
-              <%= f.submit "Submit booking", class: "btn btn-primary" %>
-          <% end %>
-         </div>
         </div>
       </div>
     </div>
-   </div>
   <% end %>
 </div>
-
+<!-- Map -->
 <div class="row d-flex">
-  <div class="col-6 flex-end">
+  <div class="col-12">
     <div id="map"
          style="width: 100%; height: 600px;"
          data-markers="<%= @markers.to_json %>"
@@ -75,3 +70,4 @@
     </div>
   </div>
 </div>
+
