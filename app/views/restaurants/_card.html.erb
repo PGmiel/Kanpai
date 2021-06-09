@@ -7,7 +7,7 @@
   <div class="column">
     <div class="summary">
       <ul class="list-inline">
-        <li>Name: <%= restaurant.name %></li>
+        <li>Name: <%= link_to restaurant.name, restaurant_path(restaurant) %></li>
         <li>Address: <%= restaurant.address %></li>
         <li>Owner: <%= restaurant.user.full_name %></li>
         <li>
@@ -19,6 +19,8 @@
           <%end%>
           <%="#{x} tables available"%>
         </li>
+
+         <%="#{restaurant.average_rating}/5"%>
        <!--  To buy:
         <li><%# restaurant.menu_items.each do |item| %></li>
           <ul>
