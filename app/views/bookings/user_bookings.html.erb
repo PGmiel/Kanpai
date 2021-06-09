@@ -2,7 +2,8 @@
   <% @bookings.each do |booking| %>
     <% if booking.user_id == current_user.id  %>
       <ul>
-        <li><%= booking.datetime %></li>
+        <li><%= booking.starts_at %></li>
+        <li><%= booking.ends_at %></li>
         <li><%= booking.status %></li>
         <li><%= booking.table.restaurant.name %></li>
         <li><%= booking.table.restaurant.address %></li>

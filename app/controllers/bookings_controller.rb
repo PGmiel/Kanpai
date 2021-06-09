@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @restaurant = Restaurant.find(params[:restaurant_id])
-    table = @restaurant.find_table(@booking.datetime, @booking.number_of_customers)
+    table = @restaurant.find_table(@booking.starts_at, @booking.ends_at, @booking.number_of_customers)
     @booking.table = table
     @booking.user = current_user
     @booking.status = "booked"
@@ -30,6 +30,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:datetime, :number_of_customers, :status)
+    params.require(:booking).permit(:ends_at, :starts_at, :number_of_customers, :status)
   end
 end
