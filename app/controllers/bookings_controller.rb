@@ -10,14 +10,16 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new(booking_params)
-    @restaurant = Restaurant.find(params[:restaurant_id])
-    table = @restaurant.find_table(@booking.starts_at, @booking.ends_at, @booking.number_of_customers)
-    @booking.table = table
-    @booking.user = current_user
-    @booking.status = "booked"
-    @booking.save!
-    redirect_to root_path
+      # if
+      @booking = Booking.new(booking_params)
+      @restaurant = Restaurant.find(params[:restaurant_id])
+      table = @restaurant.find_table(@booking.starts_at, @booking.ends_at = @booking.starts_at + 3600, @booking.number_of_customers)
+      @booking.table = table
+      @booking.user = current_user
+      @booking.status = "booked"
+      @booking.save!
+      CheckTableStatusJob.set(wait_until: @booking.starts_at).perform_later(table.id)
+      redirect_to root_path
   end
 
   def update
