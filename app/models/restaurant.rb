@@ -60,4 +60,14 @@ class Restaurant < ApplicationRecord
       menu_item.category == "Wine"
     end
   end
+
+  def average_rating
+    # @average = Review.average_rating
+    # @average = Review.average(:rating)
+    sum = 0
+    self.reviews.each do |review|
+      sum += review.rating
+    end
+    return sum.to_f/self.reviews.count
+  end
 end
