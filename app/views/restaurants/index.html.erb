@@ -16,15 +16,18 @@
       <li>Name: <%= link_to restaurant.name, restaurant_path(restaurant) %></li>
       <li>Address: <%= restaurant.address %></li>
       <li>Owner: <%= restaurant.user.full_name %></li>
-      <li>
-        <% x = 0%>
-        <% restaurant.tables.each do |table|%>
-          <%if table.status != "booked"%>
-            <% x += 1%>
+      <%="#{restaurant.average_rating}/5"%>
+
+        <div>
+          <% x = 0%>
+          <% restaurant.tables.each do |table|%>
+            <%if table.status != "booked"%>
+              <% x += 1%>
+            <%end%>
           <%end%>
-        <%end%>
-        <%="#{x} tables available"%>
-      </li>
+          <%="#{x} tables available"%>
+        </div>
+      
       To buy:
       <li><% restaurant.menu_items.each do |item| %></li>
         <ul>

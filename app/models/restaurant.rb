@@ -23,4 +23,14 @@ class Restaurant < ApplicationRecord
     available_tables = tables.where("capacity >= ?", number_of_customers).order(:capacity)
     available_table = available_tables.detect { |table| table.bookings.where(starts_at: starts_at, ends_at: ends_at).empty? }
   end
+
+  def average_rating
+    # @average = Review.average_rating
+    # @average = Review.average(:rating)
+    sum = 0
+    self.reviews.each do |review|
+      sum += review.rating
+    end
+    return sum.to_f/self.reviews.count
+  end
 end
