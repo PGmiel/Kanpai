@@ -1,8 +1,44 @@
-<h1 class="text-center">You booked the table number <%= @table.number_of_table %></h1>
-<h3 class="text-center"> Make your order </h3>
-<div class="container">
-  <%# @order.table.restaurant.menus.menu_items.each do |menu_item| %>
-    <%#= menu_item.item_name %>
-  <%# end %>
+<div class="container mt-5">
+  <h1 class="text-center ">You booked the table number <%= @table.number_of_table %></h1>
+  <h3 class="text-center"> Add whatchouwant to the cart </h3>
+</div>
+<div class="container drinks my-5">
+    <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: white; height: 60px">Drinks</h2>
+
+      <% @drinks_category.each do |drink_category| %>
+        <% @restaurant.menu_items.each do |menu_item| %>
+          <% if menu_item.category == drink_category %>
+            <h4><%= drink_category %></h4>
+            <ul>
+              <% @restaurant.menu_items.each do |menu_item| %>
+                <% if menu_item.category == drink_category %>
+                  <li><p><%= menu_item.item_name %></p></li>
+                <% end %>
+              <% end %>
+            </ul>
+          <% end %>
+          <% break if menu_item.category == drink_category %>
+        <% end %>
+      <% end %>
 
 </div>
+<div class="container food my-5">
+    <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: white; height: 60px">Food</h2>
+
+      <% @food_category.each do |food_category| %>
+        <% @restaurant.menu_items.each do |menu_item| %>
+          <% if menu_item.category == food_category %>
+            <h4><%= food_category %></h4>
+            <ul>
+              <% @restaurant.menu_items.each do |menu_item| %>
+                <% if menu_item.category == food_category %>
+                  <li><p><%= menu_item.item_name %></p></li>
+                <% end %>
+              <% end %>
+            </ul>
+          <% end %>
+          <% break if menu_item.category == food_category %>
+        <% end %>
+      <% end %>
+</div>
+
