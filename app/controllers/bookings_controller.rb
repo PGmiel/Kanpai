@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
       CheckTableStatusJob.set(wait_until: @booking.starts_at).perform_later(table.id) # or (table_id)
       redirect_to restaurants_path
     else
-      flash[:notice] = "Issue"
+      flash[:alert] = "Issue"
       redirect_to restaurants_path
     end
   end
