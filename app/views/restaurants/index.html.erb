@@ -1,6 +1,6 @@
 <!-- <div class="content mt-5"> -->
   <!-- Filter -->
-  <div class='container mt-5 pt-5'>
+  <div class='container mt-5 pt-5 d-flex'>
     <div class="form-container">
         <%= form_tag restaurants_path, method: :get do %>
         <%= text_field_tag :query,
@@ -13,16 +13,15 @@
     </div>
   </div>
 
-
     <div class="row">
-        <div class="restaurant-cards col-6 col-6-m col-12-sm">
+        <div class="restaurant-cards mt-5 pl-5 pr-0 col-6 col-6-m col-12-sm">
           <!-- List of restaurants -->
             <% @restaurants.each do |restaurant| %>
               <%= render "card", restaurant: restaurant %>
             <% end %>
         </div>
 
-        <div class="col-6 col-6-m col-12-sm">
+        <div class="pl-0 col-6 col-6-m col-12-sm">
           <!-- Map -->
           <div class="map sticky-top">
               <div id="map"
