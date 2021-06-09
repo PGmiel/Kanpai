@@ -4,6 +4,7 @@ class Restaurant < ApplicationRecord
   has_many :bookings, through: :tables
   has_many :menus
   has_many :menu_items, through: :menus
+  has_many :reviews
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?

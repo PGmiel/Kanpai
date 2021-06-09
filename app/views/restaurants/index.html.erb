@@ -13,7 +13,7 @@
 <div class="container">
   <% @restaurants.each do |restaurant| %>
     <ul class="list-inline">
-      <li>Name: <%= restaurant.name %></li>
+      <li>Name: <%= link_to restaurant.name, restaurant_path(restaurant) %></li>
       <li>Address: <%= restaurant.address %></li>
       <li>Owner: <%= restaurant.user.full_name %></li>
       <li>
