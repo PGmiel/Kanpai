@@ -13,22 +13,23 @@
     </div>
   </div>
 
-  <div class="d-flex cards-map mr-0 pr-0 mt-5 ">
-      <div class="restaurant-cards d-flex flex-column col-8">
-        <!-- List of restaurants -->
-          <% @restaurants.each do |restaurant| %>
-            <%= render "card", restaurant: restaurant %>
-          <% end %>
-      </div>
 
-      <div class="col-4 col-offset-8">
-        <!-- Map -->
-        <div class="map sticky-top">
-            <div id="map"
-                 style="width: 100%; height: 90vh;"
-                 data-markers="<%= @markers.to_json %>"
-                 data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-            </div>
+    <div class="row">
+        <div class="restaurant-cards col-6 col-6-m col-12-sm">
+          <!-- List of restaurants -->
+            <% @restaurants.each do |restaurant| %>
+              <%= render "card", restaurant: restaurant %>
+            <% end %>
         </div>
-      </div>
-  </div>
+
+        <div class="col-6 col-6-m col-12-sm">
+          <!-- Map -->
+          <div class="map sticky-top">
+              <div id="map"
+                   style="width: 100%; height: 90vh;"
+                   data-markers="<%= @markers.to_json %>"
+                   data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+              </div>
+          </div>
+        </div>
+    </div>
