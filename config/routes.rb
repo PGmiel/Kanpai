@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   end
 
   resources :tables, only: [:show]
-  resources :orders, only: [:view, :show]
+  resources :orders, only: [:view, :show] do
+    resources :order_items, only: [:create]
+  end
 
   get "bookings", to: "bookings#user_bookings"
   get 'dashboard', to: 'pages#dashboard'

@@ -24,4 +24,40 @@ class Restaurant < ApplicationRecord
     # available_table = available_tables.detect { |table| table.bookings.where(starts_at: starts_at, ends_at: ends_at).empty? }
     available_table = available_tables.detect { |table| table.bookings.where(created_at: starts_at..ends_at).empty? }
   end
+
+  def starters
+    self.menu_items.select do |menu_item|
+      menu_item.category == "Starter"
+    end
+  end
+
+  def main_dishes
+    self.menu_items.select do |menu_item|
+      menu_item.category == "Main Dishes"
+    end
+  end
+
+  def desserts
+    self.menu_items.select do |menu_item|
+      menu_item.category == "Dessert"
+    end
+  end
+
+  def hot_drinks
+    self.menu_items.select do |menu_item|
+      menu_item.category == "Hot Drinks"
+    end
+  end
+
+  def beers
+    self.menu_items.select do |menu_item|
+      menu_item.category == "Beers"
+    end
+  end
+
+  def wines
+    self.menu_items.select do |menu_item|
+      menu_item.category == "Wine"
+    end
+  end
 end
