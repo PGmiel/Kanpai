@@ -12,4 +12,9 @@ Rails.application.routes.draw do
 
   get "bookings", to: "bookings#user_bookings"
   get 'dashboard', to: 'pages#dashboard'
+
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end
