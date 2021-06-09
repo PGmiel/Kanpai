@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
 
+Order.destroy_all
 MenuItem.destroy_all
 Booking.destroy_all
 Menu.destroy_all
@@ -52,7 +53,7 @@ puts "Creating Menu Items"
   10.times do
     menu_items = MenuItem.create!(
       item_name: [Faker::Food.dish, Faker::Dessert.variety, Faker::Beer.name].sample ,
-      category: ["food", "dessert", "drink"].sample,
+      category: ["Hot Drinks", "Dessert", "Beers", "Wine", "Main Dishes", "Starter"].sample,
       price: rand(2..15),
       menu: menu
   )
