@@ -21,7 +21,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
-    @average_reviews = @restaurant.average_rating
+    @bookings = Booking.all
   end
 
   private

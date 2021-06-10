@@ -25,10 +25,24 @@
     
 
   <%= month_calendar do |date| %>
-  <div style='background-color: red'><%= date.day %></div>
+  <div><%= date.day %></div>
   <div id="<%= date.day %>-<%= date.month %>" data-month = "<%= date.month %>" ></div>
 <% end %>
       
+    <div>
+        <% @bookings.each do |booking| %>
+      <% if booking.user_id == current_user.id  %>
+        <ul>
+          <li><%= " you booked a table at #{booking.starts_at}" %></li> 
+          <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
+          <li><%= booking.status %></li>
+          <li><%= booking.table.restaurant.name %></li>
+          <li><%= booking.table.restaurant.address %></li>
+          <li><%= booking.table.id %></li>
+        </ul>
+      <% end %>
+    <% end %>
+    </div>
 
   <% @restaurant.reviews.each do |review| %>
     <li class="list-group-item">
