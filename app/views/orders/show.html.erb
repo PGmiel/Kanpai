@@ -162,28 +162,32 @@
       <div class="menu-item-infos px-3 py-4">
         <ul>
           <% @order.order_items.each do |order_item| %>
-            <li>
-              <%= order_item.menu_item.item_name %>
-              - <%= order_item.quantity %>x
-                <%= order_item.status %>
-                <%= order_item.total_price %>
-            </li>
+            <% if order_item.status == "pending" %>
+              <li>
+                  <%= order_item.menu_item.item_name %>
+                  - <%= order_item.quantity %>X
+                  - <%= order_item.total_price %> €
+              </li>
+            <% end %>
           <% end %>
         </ul>
+        <%= link_to "Validate your order", validate_order_path(@order), class: "btn btn-warning" %>
       </div>
   </div>
-<% else %>
+<% end  %>
+<% if  @order_items.where(status: "sent").present? %>
   <div class="container drinks my-5" style="background-color: white;">
-    <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: white; height: 60px">Pending Orders</h2>
+    <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: white; height: 60px">Your basket</h2>
       <div class="menu-item-infos px-3 py-4">
         <ul>
           <% @order.order_items.each do |order_item| %>
-            <li>
-              <%= order_item.menu_item.item_name %>
-              - <%= order_item.quantity %>x
-                <%= order_item.status %>
-                <%= order_item.total_price %>
-            </li>
+            <% if order_item.status == "sent" %>
+              <li>
+                  <%= order_item.menu_item.item_name %>
+                  - <%= order_item.quantity %>x
+                    <%= order_item.total_price %> €
+              </li>
+            <% end %>
           <% end %>
         </ul>
         <button class="btn btn-light"> Pay now </button>
