@@ -13,9 +13,13 @@ Rails.application.routes.draw do
   resources :orders, only: [:view, :show] do
     resources :order_items, only: [:create]
   end
+  resources :order_items, only: [:destroy]
 
   get "bookings", to: "bookings#user_bookings"
   get 'dashboard', to: 'pages#dashboard'
+  patch "validate_table_order/:order_id", to: "order_items#validate_order", as: :validate_order
+  get "closing_table/:order_id", to: "orders#closing_table", as: :closing_order
+  get "thank_you", to: "pages#thank_you"
 
   require "sidekiq/web"
   authenticate :user, ->(user) { user.admin? } do

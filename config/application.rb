@@ -23,5 +23,6 @@ module Kanpai
     config.active_job.queue_adapter = :sidekiq
     config.time_zone = 'Brussels'
     config.active_record.default_timezone = :local
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end

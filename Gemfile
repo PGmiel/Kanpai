@@ -15,6 +15,7 @@ gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 gem 'turbolinks', '~> 5'
+gem 'turbolinks_render'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -28,6 +29,7 @@ gem 'pg_search', '~> 2.3.0'
 # for sidekiq
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
+gem "simple_calendar", "~> 2.4"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

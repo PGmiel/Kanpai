@@ -23,9 +23,39 @@ class Restaurant < ApplicationRecord
     }
 
   def find_table(starts_at, ends_at, number_of_customers)
-    available_tables = tables.where("capacity >= ?", number_of_customers).order(:capacity)
+    available_tables = tables.where("capacity >= ?", number_of_customers).order(:capacity) # && tables.where("status == ?", "available")
     # available_table = available_tables.detect { |table| table.bookings.where(starts_at: starts_at, ends_at: ends_at).empty? }
     available_table = available_tables.detect { |table| table.bookings.where(created_at: starts_at..ends_at).empty? }
+  end
+
+  def number_of_tables_available
+    x = 0
+    self.tables.each do |table|
+      if table.status != "booked"
+        x += 1
+      end
+    end
+    return x
+  end
+
+  def pourcentage_of_table_available
+    (number_of_tables_available.to_f / tables.count) * 100
+  end
+
+
+  def available?
+    number_of_tables_available != 0
+  end
+
+  def color
+    if available?
+      if pourcentage_of_table_available < 20
+        return "#ff9900"
+      else
+        return "#00cc00"
+      end
+    end
+    return "#ff3300"
   end
 
   def starters
