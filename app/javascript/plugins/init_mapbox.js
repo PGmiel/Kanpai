@@ -12,7 +12,7 @@ const buildMap = (mapElement) => {
 
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
-    new mapboxgl.Marker()
+    new mapboxgl.Marker({'color': marker.color})
       .setLngLat([ marker.lng, marker.lat ])
       .addTo(map);
   });
@@ -26,14 +26,12 @@ const fitMapToMarkers = (map, markers) => {
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
-  if (mapElement) {
-    const map = buildMap(mapElement);
-    const markers = JSON.parse(mapElement.dataset.markers);
-    addMarkersToMap(map, markers);
-    fitMapToMarkers(map, markers);
-    map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl }));
-  }
+  const map = buildMap(mapElement);
+  const markers = JSON.parse(mapElement.dataset.markers);
+  addMarkersToMap(map, markers);
+  fitMapToMarkers(map, markers);
+  map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
+    mapboxgl: mapboxgl }));
 };
 
 // markers.forEach((marker) => {
