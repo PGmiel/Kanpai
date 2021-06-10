@@ -5,10 +5,10 @@ class OrderItemsController < ApplicationController
     @quantity = params[:order_item][:quantity]
     @order_item = OrderItem.new(order_item_params)
     @order_item.order = @order
-    if @order_item.save!
+    if @order_item.save
       @order_item.update(status: "pending")
       @order_item.update(total_price: @order_item.quantity * @menu_item.price)
-      redirect_to order_path(@order)
+      redirect_to order_path(@order, anchor: "pending")
     else
       flash[:notice] = "Not available"
       redirect_to order_path(@order)
@@ -19,7 +19,13 @@ class OrderItemsController < ApplicationController
     @order = Order.find(params[:order_id])
     @pending_orders = @order.order_items.select { |order_item| order_item.status == "pending" }
     @pending_orders.each { |pending_order| pending_order.update(status: "sent") }
-    redirect_to order_path(@order)
+    redirect_to order_path(@order, anchor: "ordered")
+  end
+
+  def destroy
+    @order_item = OrderItem.find(params[:id])
+    @order_item.destroy
+    redirect_to order_path(@order_item.order, anchor: "pending")
   end
 
   private
