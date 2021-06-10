@@ -12,7 +12,7 @@
             <li class="d-flex justify-content-between">
               <p><%= hot_drink.item_name%></p>
               <div class="form">
-                <%= simple_form_for [@order, @order_item] do |f| %>
+                <%= simple_form_for [@order, @order_item], html: {class: "form-inline"} do |f| %>
                   <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
                   <%= f.input :menu_item_id, as: :hidden, input_html: {value: hot_drink.id} %>
                   <%= f.button :submit, "add", class: 'btn btn-light'%>
@@ -31,7 +31,7 @@
             <li class="d-flex justify-content-between">
               <p><%= beer.item_name %></p>
               <div class="form">
-                <%= simple_form_for [@order, @order_item] do |f| %>
+                <%= simple_form_for [@order, @order_item], html: {class: "form-inline"} do |f| %>
                   <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
                   <%= f.input :menu_item_id, as: :hidden, input_html: {value: beer.id} %>
                   <%= f.button :submit, "add", class: 'btn btn-light'%>
@@ -49,7 +49,7 @@
             <li class="d-flex justify-content-between">
               <p><%= wine.item_name %></p>
               <div class="form">
-                <%= simple_form_for [@order, @order_item] do |f| %>
+                <%= simple_form_for [@order, @order_item], html: {class: "form-inline"} do |f| %>
                   <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
                   <%= f.input :menu_item_id, as: :hidden, input_html: {value: wine.id} %>
                   <%= f.button :submit, "add", class: 'btn btn-light'%>
@@ -89,7 +89,7 @@
               <li class="d-flex justify-content-between">
                 <p><%= starter.item_name %></p>
                 <div class="form">
-                  <%= simple_form_for [@order, @order_item] do |f| %>
+                  <%= simple_form_for [@order, @order_item], html: {class: "form-inline"} do |f| %>
                     <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
                     <%= f.input :menu_item_id, as: :hidden, input_html: {value: starter.id} %>
                     <%= f.button :submit, "add", class: 'btn btn-light'%>
@@ -107,7 +107,7 @@
             <li class="d-flex justify-content-between">
               <p><%= main_dishe.item_name %></p>
               <div class="form">
-                <%= simple_form_for [@order, @order_item] do |f| %>
+                <%= simple_form_for [@order, @order_item], html: {class: "form-inline"} do |f| %>
                   <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
                   <%= f.input :menu_item_id, as: :hidden, input_html: {value: main_dishe.id} %>
                   <%= f.button :submit, "add", class: 'btn btn-light'%>
@@ -125,7 +125,7 @@
             <li class="d-flex justify-content-between">
               <p><%= dessert.item_name %></p>
               <div class="form">
-                <%= simple_form_for [@order, @order_item] do |f| %>
+                <%= simple_form_for [@order, @order_item], html: {class: "form-inline"} do |f| %>
                   <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
                   <%= f.input :menu_item_id, as: :hidden, input_html: {value: dessert.id} %>
                   <%= f.button :submit, "add", class: 'btn btn-light'%>

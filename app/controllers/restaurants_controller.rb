@@ -14,9 +14,10 @@ class RestaurantsController < ApplicationController
       {
         lat: restaurant.latitude,
         lng: restaurant.longitude,
+        color: restaurant.color,
         info_window: render_to_string(partial: "info_window", locals: { restaurant: restaurant })
         # , image_url: helpers.asset_url('REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS')
-     }
+      }
     end
   end
 

@@ -25,6 +25,35 @@ class Restaurant < ApplicationRecord
     available_table = available_tables.detect { |table| table.bookings.where(created_at: starts_at..ends_at).empty? }
   end
 
+  def number_of_tables_available
+    x = 0
+    self.tables.each do |table|
+      if table.status != "booked"
+        x += 1
+      end
+    end
+    return x
+  end
+
+  def pourcentage_of_table_available
+    (number_of_tables_available / tables.count) * 100
+  end
+
+
+  def available?
+    number_of_tables_available != 0
+  end
+
+  def color
+    if available?
+      return "red"
+    elsif pourcentage_of_table_available <= 20
+      return "orange"
+    else
+      return "green"
+    end
+  end
+
   def starters
     self.menu_items.select do |menu_item|
       menu_item.category == "Starter"
