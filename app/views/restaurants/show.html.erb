@@ -5,6 +5,30 @@
   <%= link_to 'Home', root_path %>
   <%= link_to "Back", :back %>
   <%= link_to 'Add a Review', new_restaurant_review_path(@restaurant) %>
+ 
+  <% x = 0%>
+  <% @restaurant.tables.each do |table|%>
+    <%if table.status != "booked"%>
+      <% x += 1%>
+    <%end%>
+  <%end%>
+  <%="#{x} tables available / #{@restaurant.tables.count} tables"%>
+  <% available_table = x%>
+  <% total_table = @restaurant.tables.count%>
+  <% if available_table == 0%>
+    <div class='unavailable' style='background-color: red'><%= "red" %></div>
+  <% elsif available_table/total_table < 0.25%>
+    <div class='few_places' style='background-color: orange'><%= "orange" %></div>
+  <% else%>
+    <div class='available' style='background-color: green'><%= "green" %></div>
+  <% end %>
+    
+
+  <%= month_calendar do |date| %>
+  <div style='background-color: red'><%= date.day %></div>
+  <div id="<%= date.day %>-<%= date.month %>" data-month = "<%= date.month %>" ></div>
+<% end %>
+      
 
   <% @restaurant.reviews.each do |review| %>
     <li class="list-group-item">
