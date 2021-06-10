@@ -9,15 +9,15 @@
       <ul class="list-inline">
         <li>Name: <%= link_to restaurant.name, restaurant_path(restaurant) %></li>
         <li>Address: <%= restaurant.address %></li>
-        <li>Owner: <%= restaurant.user.full_name %></li>
+<!--         <li>Owner: <%#= restaurant.user.full_name %></li> -->
         <li>
-          <% x = 0%>
-          <% restaurant.tables.each do |table|%>
-            <%if table.status != "booked"%>
-              <% x += 1%>
-            <%end%>
-          <%end%>
-          <%="#{x} tables available"%>
+<!--           <%# x = 0%>
+          <%# restaurant.tables.each do |table|%>
+            <%#if table.status != "booked"%>
+              <%# x += 1%>
+            <%#end%>
+          <%#end%> -->
+          <%="#{restaurant.number_of_tables_available} tables available"%>
         </li>
 
          <%="#{restaurant.average_rating}/5"%>
