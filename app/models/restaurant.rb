@@ -36,7 +36,7 @@ class Restaurant < ApplicationRecord
   end
 
   def pourcentage_of_table_available
-    (number_of_tables_available / tables.count) * 100
+    (number_of_tables_available.to_f / tables.count) * 100
   end
 
 
@@ -46,12 +46,13 @@ class Restaurant < ApplicationRecord
 
   def color
     if available?
-      return "red"
-    elsif pourcentage_of_table_available <= 20
-      return "orange"
-    else
-      return "green"
+      if pourcentage_of_table_available < 20
+        return "#ff9900"
+      else
+        return "#00cc00"
+      end
     end
+    return "#ff3300"
   end
 
   def starters
