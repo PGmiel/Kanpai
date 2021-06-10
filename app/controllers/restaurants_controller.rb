@@ -24,6 +24,16 @@ class RestaurantsController < ApplicationController
     @average_reviews = @restaurant.average_rating
   end
 
+  def favoritize
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    if current_user.favorited?(@restaurant)
+      current_user.unfavorite(@restaurant)
+    else
+      current_user.favorite(@restaurant)
+    end
+    redirect_to restaurants_path
+  end
+
   private
 
   def set_restaurant

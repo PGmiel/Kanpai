@@ -25,17 +25,20 @@ puts "creating a User"
     status_owner: 'owner'
   )
 
-puts "Creating a Restaurant"
+15.times do
+  puts "Creating a Restaurant"
   restaurant = Restaurant.create!(
     name: Faker::Restaurant.name,
-    latitude: rand(50..51),
-    longitude: rand(4..5),
+    address: Faker::Address.full_address,
+    # address:  Faker::Config.locale=(nl_BE).address,
+    # latitude: rand(50..51),
+    # longitude: rand(4..5),
     user: user,
   )
 
 
 puts "Creating Tables"
-  5.times do |n|
+  rand(5..10).times do |n|
     table = Table.create!(
       number_of_table: n + 1,
       capacity: rand(1..12),
@@ -43,6 +46,7 @@ puts "Creating Tables"
       restaurant: restaurant
     )
   end
+
 
 puts "Creating 1 Menu"
   menu = Menu.create!(
@@ -58,7 +62,7 @@ puts "Creating Menu Items"
       menu: menu
   )
   end
-
+end
 
 
 
