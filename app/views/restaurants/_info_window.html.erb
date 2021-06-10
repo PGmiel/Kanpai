@@ -1,2 +1,8 @@
-<h2><%= restaurant.name %></h2>
-<p><%= restaurant.address %></p>
+
+<%= link_to restaurant_path(restaurant) do %>
+<img class='image-popup' src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80" alt="bar">
+    <div>
+      <%= link_to restaurant.name.capitalize, restaurant_path(restaurant) %>
+      
+    </div>
+<%end%>
