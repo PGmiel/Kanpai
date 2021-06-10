@@ -1,34 +1,31 @@
 <!-- <div class="content mt-5"> -->
-  <!-- Filter -->
-  <div class='container mt-5 pt-5 d-flex'>
-    <div class="form-container">
-        <%= form_tag restaurants_path, method: :get do %>
-        <%= text_field_tag :query,
-          params[:query],
-          class: "form-control",
-          placeholder: "Search here!"
-        %>
-        <%= submit_tag "Submit", class: "btn btn-warning" %>
-      <% end %>
+<div class="row mt-5">
+    <!-- Filter -->
+    <div class="restaurant-cards pl-5 pr-0 col-lg-6 col-md-6 col-12-sm">
+      <div class="form-container d-flex">
+          <%= form_tag restaurants_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Search here!"
+          %>
+          <%= submit_tag "Submit", class: "btn btn-warning" %>
+        <% end %>
+      </div>
+      <!-- List of restaurants -->
+        <% @restaurants.each do |restaurant| %>
+          <%= render "card", restaurant: restaurant %>
+        <% end %>
     </div>
-  </div>
-
-  <div class="row">
-      <div class="restaurant-cards mt-5 pl-5 pr-0 col-6 col-6-m col-12-sm">
-        <!-- List of restaurants -->
-          <% @restaurants.each do |restaurant| %>
-            <%= render "card", restaurant: restaurant %>
-          <% end %>
+    <!-- Map -->
+    <div class="pl-0 col-lg-6 col-md-6 col-12-sm">
+      <!-- Map -->
+      <div class="map sticky-top">
+          <div id="map"
+               style="width: 100%; height: 90vh;"
+               data-markers="<%= @markers.to_json %>"
+               data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
       </div>
-
-      <div class="pl-0 col-6 col-6-m col-12-sm">
-        <!-- Map -->
-        <div class="map sticky-top">
-            <div id="map"
-                 style="width: 100%; height: 90vh;"
-                 data-markers="<%= @markers.to_json %>"
-                 data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-            </div>
-        </div>
-      </div>
-  </div>
+    </div>
+</div>
