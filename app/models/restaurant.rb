@@ -1,4 +1,6 @@
 class Restaurant < ApplicationRecord
+  acts_as_favoritable #to be able to save raestaurant to favourites
+
   belongs_to :user
   has_many :tables
   has_many :bookings, through: :tables
@@ -8,6 +10,7 @@ class Restaurant < ApplicationRecord
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
+
 
   include PgSearch::Model
   pg_search_scope :general_search,
@@ -46,7 +49,7 @@ class Restaurant < ApplicationRecord
 
   def color
     if available?
-      if pourcentage_of_table_available < 20
+      if pourcentage_of_table_available <= 20
         return "#ff9900"
       else
         return "#00cc00"
@@ -101,3 +104,4 @@ class Restaurant < ApplicationRecord
     return sum.to_f/self.reviews.count
   end
 end
+

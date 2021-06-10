@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :bookings, only: [ :index, :new, :create ]
     resources :tables, only: [ :index, :new, :create ]
     resources :reviews, only: [ :new, :create, :edit, :update, :show, :destroy]
+    post "favoritize", to: "restaurants#favoritize"
   end
 
   resources :tables, only: [:show]
