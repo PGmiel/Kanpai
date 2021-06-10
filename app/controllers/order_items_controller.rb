@@ -15,13 +15,11 @@ class OrderItemsController < ApplicationController
     end
   end
 
-  def update
-
-    # if params[:query].present?
-    #   @order_items.each do |order_item|
-    #     order_item.update(status: "sent")
-    #   end
-    # end
+  def validate_order
+    @order = Order.find(params[:order_id])
+    @pending_orders = @order.order_items.select { |order_item| order_item.status == "pending" }
+    @pending_orders.each { |pending_order| pending_order.update(status: "sent") }
+    redirect_to order_path(@order)
   end
 
   private

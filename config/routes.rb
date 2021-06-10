@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   get "bookings", to: "bookings#user_bookings"
   get 'dashboard', to: 'pages#dashboard'
+  get "validate_table_order/:order_id", to: "order_items#validate_order", as: :validate_order
 
   require "sidekiq/web"
   authenticate :user, ->(user) { user.admin? } do
