@@ -156,18 +156,49 @@
 
 
 </div>
-
-<div class="container drinks my-5" style="background-color: white;">
+<% if @order_items.where(status: "pending").present? %>
+  <div class="container drinks my-5" style="background-color: white;">
     <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: white; height: 60px">Pending Orders</h2>
-    <div class="menu-item-infos px-3 py-4">
-      <ul>
-        <% @order.order_items.each do |order_item| %>
-          <li>
-            <%= order_item.menu_item.item_name %>
-            - <%= order_item.quantity %>x
-          </li>
-        <% end %>
-      </ul>
-      <button class="btn btn-light"> Validate your orders </button>
-    </div>
-</div>
+      <div class="menu-item-infos px-3 py-4">
+        <ul>
+          <% @order.order_items.each do |order_item| %>
+            <li>
+              <%= order_item.menu_item.item_name %>
+              - <%= order_item.quantity %>x
+                <%= order_item.status %>
+                <%= order_item.total_price %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+  </div>
+<% else %>
+  <div class="container drinks my-5" style="background-color: white;">
+    <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: white; height: 60px">Pending Orders</h2>
+      <div class="menu-item-infos px-3 py-4">
+        <ul>
+          <% @order.order_items.each do |order_item| %>
+            <li>
+              <%= order_item.menu_item.item_name %>
+              - <%= order_item.quantity %>x
+                <%= order_item.status %>
+                <%= order_item.total_price %>
+            </li>
+          <% end %>
+        </ul>
+        <button class="btn btn-light"> Pay now </button>
+      </div>
+  </div>
+<% end %>
+
+
+
+
+
+
+
+
+
+
+
+
