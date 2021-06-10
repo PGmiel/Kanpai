@@ -39,14 +39,7 @@ class ReviewsController < ApplicationController
     redirect_to restaurants_path
   end
 
-  def average_rating
-    # @average = Review.average_rating
-    @reviews = Review.all
-    @restaurant = Restaurant.find(params[:restaurant_id])
-    # @average = Review.average(:rating)
-    @average = @reviews.average(:rating)
-    @average.restaurant = @restaurant
-  end
+ 
 
   private
 
