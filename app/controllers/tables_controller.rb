@@ -1,4 +1,5 @@
 class TablesController < ApplicationController
+  skip_before_action :authenticate_user!
   def show
     @table = Table.find(params[:id])
     @order = @table.orders.find_by(status: "pending")

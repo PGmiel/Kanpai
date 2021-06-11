@@ -1,4 +1,5 @@
 class OrderItemsController < ApplicationController
+  skip_before_action :authenticate_user!
   def create
     @order = Order.find(params[:order_id])
     @menu_item = MenuItem.find(params[:order_item][:menu_item_id])

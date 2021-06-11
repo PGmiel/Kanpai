@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def show
     @order = Order.find(params[:id])
     @order_items = OrderItem.all
