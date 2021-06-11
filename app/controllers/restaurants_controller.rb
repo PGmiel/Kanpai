@@ -1,7 +1,6 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update]
    skip_before_action :authenticate_user!, only: [:index, :show]
-
   def index
     if params[:query].present?
       @restaurants = Restaurant.general_search(params[:query])
