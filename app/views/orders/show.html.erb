@@ -1,9 +1,9 @@
 <div class="container mt-5">
   <h1 class="text-center ">You booked the table number <%= @table.number_of_table %></h1>
-  <h3 class="text-center"> Add whatchouwant to the cart </h3>
+  <h3 class="text-center" style="font-weight: 400"> Add whatchouwant to the cart </h3>
 </div>
 <div class="container drinks my-5">
-    <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: white; height: 60px">Drinks</h2>
+    <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: #F4F4F4; height: 60px">Drinks</h2>
     <div class="menu-item-infos mx-3 mt-4">
       <% if @hot_drinks.present? %>
         <h4>Hot Drinks</h4>
@@ -80,7 +80,7 @@
 
 </div>
 <div class="container food my-5">
-    <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: white; height: 60px">Food</h2>
+    <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: #F4F4F4; height: 60px">Food</h2>
     <div class="menu-item-infos mx-3 mt-4">
       <% if @starters.present? %>
         <h4>Starters</h4>
@@ -158,8 +158,8 @@
 </div>
 <div id="pending">
   <% if @order_items.where(status: "pending").present? %>
-    <div class="container drinks my-5" style="background-color: white;">
-      <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: white; height: 60px">Pending Orders</h2>
+    <div class="container drinks my-5" style="background-color: #F4F4F4;">
+      <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: #F4F4F4; height: 60px">Pending Orders</h2>
         <div class="menu-item-infos px-3 py-4">
           <ul>
             <% @order.order_items.each do |order_item| %>
@@ -179,8 +179,8 @@
 <% end  %>
 </div>
 <% if  @order_items.where(status: "sent").present? %>
-  <div class="container drinks my-5" style="background-color: white;">
-    <h2 id="ordered" class="text-center d-flex justify-content-center align-items-center" style="background-color: white; height: 60px">Your basket</h2>
+  <div class="container drinks my-5" style="background-color: #F4F4F4 !important;">
+    <h2 id="ordered" class="text-center d-flex justify-content-center align-items-center" style="background-color: #F4F4F4; height: 60px">Your basket</h2>
       <div class="menu-item-infos px-3 py-4">
         <ul>
           <% @order.order_items.each do |order_item| %>
