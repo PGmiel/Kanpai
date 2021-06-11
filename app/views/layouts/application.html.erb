@@ -10,12 +10,18 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <%= stylesheet_pack_tag 'application' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-
-    <%= yield %>
+    <div class='page-container'>
+      <%= render 'shared/flashes' %>
+      <div><%= render 'shared/navbar' %></div>
+    
+  
+      <div><%= yield %></div>
+      <div><%= render 'shared/footer' %></div>
+    </div>
   </body>
 </html>
