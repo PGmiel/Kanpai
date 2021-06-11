@@ -26,4 +26,10 @@ class OrdersController < ApplicationController
     @order.table.update(status: "available")
     redirect_to thank_you_path
   end
+
+  def create_order
+    @table = Table.find(params[:table_id])
+    @order = Order.create(table: @table, status: "pending")
+    redirect_to order_path(@order)
+  end
 end
