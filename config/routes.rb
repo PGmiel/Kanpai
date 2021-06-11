@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   patch "validate_table_order/:order_id", to: "order_items#validate_order", as: :validate_order
   get "closing_table/:order_id", to: "orders#closing_table", as: :closing_order
   get "thank_you", to: "pages#thank_you"
+  get "validate_user/:table_id", to: "tables#validate_user", as: :validate_user
+  post "create_order/:table_id", to: "orders#create_order", as: :create_order
 
   require "sidekiq/web"
   authenticate :user, ->(user) { user.admin? } do
