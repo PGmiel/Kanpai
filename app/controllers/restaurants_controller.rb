@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update]
   skip_before_action :authenticate_user!, only: [:index, :show]
-
+  
   def index
     if params[:query].present?
       @restaurants = Restaurant.general_search(params[:query])
@@ -41,4 +41,8 @@ class RestaurantsController < ApplicationController
   def set_restaurant
     @restaurant = Restaurant.find(params[:id])
   end
+
+  # def restaurant_params
+  #   params.require(:restaurant).permit(:name, :address, :website, :phone_number, :rating, :photo)
+  # end
 end
