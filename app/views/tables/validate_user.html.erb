@@ -1,8 +1,15 @@
-
-<div class="container text-center">
-  <h1>Wecome!</h1>
-  <p>There is a booking coming up</p>
-  <p>Are you: <%= @user.full_name %></p>
-  <%= link_to "Confirm it's you", create_order_path(@table), method: :post, class: "btn btn-light" %>
-  <%= link_to "It is not me", thank_you_path, class: "btn btn-warning" %>
+<div class="push">
+</div>
+<div class="row">
+  <div class="container text-center">
+    <div class="col-12">
+      <h1>Wecome!</h1>
+      <p>There is a booking coming up</p>
+      <p>Are you: <%= @user.full_name %> ?</p>
+      <%= link_to "Confirm it's you", create_order_path(@table), method: :post, class: "btn btn-light" %>
+      <%= link_to "It is not me", root_path, class: "btn btn-warning" %>
+    </div>
+  </div>
+</div>
+<div class="push">
 </div>
