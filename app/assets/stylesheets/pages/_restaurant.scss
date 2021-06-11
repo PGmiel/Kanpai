@@ -10,14 +10,18 @@
 //   grid-gap: 16px;
 //   padding: 16px;
 // }
-body {
-  margin-top: 90px;
-}
-
 #map {
   height: 90vh;
   position: sticky;
   top: 0;
+}
+
+h1, h2, h3, h4 {
+  color: $dark-green;
+}
+
+p {
+  color: $dark-gray;
 }
 
 /*Media Queries*/
