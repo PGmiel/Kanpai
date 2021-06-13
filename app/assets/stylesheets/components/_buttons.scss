@@ -1,0 +1,12 @@
+.button-booking {
+  background-color: $white;
+  padding: 0.375em 0.75em;
+  border: 0.0625em solid $dark-green;
+  color: $dark-green;
+  font-size: 0.875em;
+  &:hover {
+    color: $white;
+    background-color: $dark-green;
+
+  }
+}

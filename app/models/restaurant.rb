@@ -99,10 +99,14 @@ class Restaurant < ApplicationRecord
     # @average = Review.average_rating
     # @average = Review.average(:rating)
     sum = 0
-    self.reviews.each do |review|
-      sum += review.rating
+    if self.reviews == []
+      return 0
+    else
+      self.reviews.each do |review|
+        sum += review.rating
+      end
+      return sum.to_f/self.reviews.count
     end
-    return sum.to_f/self.reviews.count
   end
 end
 
