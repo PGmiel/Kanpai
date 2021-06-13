@@ -46,7 +46,7 @@ restaurant  = Restaurant.create!(
 
 restaurant  = Restaurant.create!(
   name: 'Nona',
-  address: 'RUE SAINTE-CATHERINE 17-19, 1000 BRUSSELS',
+  address: 'Rue Sainte-Catherine 17-19, 1000 Brussels',
   website: 'https://www.nonalife.com/',
   phone_number: '0485 97 72 05',
   photo_url: 'https://lp-cms-production.imgix.net/2019-06/ecf1567a8e869dce9ef8ea789034177e-lpl-nona-1.jpg?auto=compress&crop=center&fit=crop&format=auto&h=832&w=1920',
