@@ -6,9 +6,14 @@ const buildMap = (mapElement) => {
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
   return new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/streets-v10'
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [-74.5, 40], // starting position
+    zoom: 9 // starting zoom
   });
 };
+ 
+// Add zoom and rotation controls to the map.
+
 
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
@@ -35,7 +40,9 @@ const initMapbox = () => {
   fitMapToMarkers(map, markers);
   map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken,
     mapboxgl: mapboxgl }));
+  map.addControl(new mapboxgl.NavigationControl());
 };
+
 
 // markers.forEach((marker) => {
 //   const popup = new mapboxgl.Popup().setHTML(marker.info_window);
