@@ -63,83 +63,83 @@ restaurant  = Restaurant.create!(
   user: users.sample
   )
 
-# restaurant  = Restaurant.create!(
-#   name: 'Nona',
-#   address: 'Rue Sainte-Catherine 17-19, 1000 Brussels',
-#   website: 'https://www.nonalife.com/',
-#   phone_number: '0485 97 72 05',
-#   photo_url: 'https://lp-cms-production.imgix.net/2019-06/ecf1567a8e869dce9ef8ea789034177e-lpl-nona-1.jpg?auto=compress&crop=center&fit=crop&format=auto&h=832&w=1920',
-#   user: users.sample
-#   )
+restaurant  = Restaurant.create!(
+  name: 'Nona',
+  address: 'Rue Sainte-Catherine 17-19, 1000 Brussels',
+  website: 'https://www.nonalife.com/',
+  phone_number: '0485 97 72 05',
+  photo_url: 'https://lp-cms-production.imgix.net/2019-06/ecf1567a8e869dce9ef8ea789034177e-lpl-nona-1.jpg?auto=compress&crop=center&fit=crop&format=auto&h=832&w=1920',
+  user: users.sample
+  )
 
-# restaurant  = Restaurant.create!(
-#   name: 'Brasserie de la Ville',
-#   address: 'Hoedenmakerstraat 14, 1000 Bruxelles',
-#   website: 'https://www.brasseriedelaville.be/en/',
-#   phone_number: '02 513 68 88',
-#   photo_url: 'https://www.brasseriedelaville.be/i/brasserie-de-la-ville-304868/3/4/5/9/5/1/1/4/1/3/8/1457347171_229/15f2923bcf91691615a067d3fe8e8f63.jpg',
-#   user: users.sample
-#   )
+restaurant  = Restaurant.create!(
+  name: 'Brasserie de la Ville',
+  address: 'Hoedenmakerstraat 14, 1000 Bruxelles',
+  website: 'https://www.brasseriedelaville.be/en/',
+  phone_number: '02 513 68 88',
+  photo_url: 'https://www.brasseriedelaville.be/i/brasserie-de-la-ville-304868/3/4/5/9/5/1/1/4/1/3/8/1457347171_229/15f2923bcf91691615a067d3fe8e8f63.jpg',
+  user: users.sample
+  )
 
-# restaurant  = Restaurant.create!(
-#   name: 'Mer du Nord',
-#   address: 'Sint-Katelijnestraat 45, 1000 Bruxelles',
-#   website: 'https://vishandelnoordzee.be/',
-#   phone_number: '02 513 11 92',
-#   photo_url: 'https://s3-media0.fl.yelpcdn.com/bphoto/nHoNHepYebC2ai4Lhzq0Ew/o.jpg',
-#   user: users.sample
-#   )
-  
+restaurant  = Restaurant.create!(
+  name: 'Mer du Nord',
+  address: 'Sint-Katelijnestraat 45, 1000 Bruxelles',
+  website: 'https://vishandelnoordzee.be/',
+  phone_number: '02 513 11 92',
+  photo_url: 'https://s3-media0.fl.yelpcdn.com/bphoto/nHoNHepYebC2ai4Lhzq0Ew/o.jpg',
+  user: users.sample
+  )
 
-# restaurant  = Restaurant.create!(
-#   name: 'Comptoir Rodin',
-#   address: 'Avenue Auguste Rodin 8, 1050 Ixelles',
-#   website: 'http://comptoir-rodin.be/',
-#   phone_number: '02 203 00 14',
-#   photo_url: 'https://lp-cms-production.imgix.net/2019-06/c5ad61c161a1848c663791328abae350-lpl-comptoir_rodin-1.jpg?auto=compress&crop=center&fit=crop&format=auto&h=832&w=1920',
-#   user: users.sample
-#   )
- 
 
-# restaurant  = Restaurant.create!(
-#   name: 'Palo Alto',
-#   address: '35 Rue Tasson-Snel, 1060 Saint-Gilles',
-#   website: 'https://www.paloaltoginfood.be/',
-#   phone_number: '0485 97 72 05',
-#   photo_url: 'https://lp-cms-production.imgix.net/2019-06/8a1512e5c8a631f6d8b133def4bdcb64-lpl-palo_alto-1.jpg?auto=compress&crop=center&fit=crop&format=auto&h=832&w=1920',
-#   user: users.sample
-#   )
-  
+restaurant  = Restaurant.create!(
+  name: 'Comptoir Rodin',
+  address: 'Avenue Auguste Rodin 8, 1050 Ixelles',
+  website: 'http://comptoir-rodin.be/',
+  phone_number: '02 203 00 14',
+  photo_url: 'https://lp-cms-production.imgix.net/2019-06/c5ad61c161a1848c663791328abae350-lpl-comptoir_rodin-1.jpg?auto=compress&crop=center&fit=crop&format=auto&h=832&w=1920',
+  user: users.sample
+  )
 
-# restaurant  = Restaurant.create!(
-#   name: 'Big Mama',
-#   address: 'Oud Korenhuis 41, 1000 Bruxelles',
-#   website: 'https://bigmama.be/',
-#   phone_number: '02 513 36 59',
-#   photo_url: 'https://s3-media0.fl.yelpcdn.com/bphoto/tuAYds0YF1TGDbAxeE-Kng/o.jpg',
-#   user: users.sample
-#   )
-  
 
-# restaurant  = Restaurant.create!(
-#   name: 'Hortense & Humus',
-#   address: 'Rue de Vergnies 2, 1000 Bruxelles',
-#   website: 'https://pleinpubliek.be/',
-#   phone_number: '0479 54 44 87',
-#   photo_url: 'https://lp-cms-production.imgix.net/2019-06/2683622f9fc73887ceafb413a3e2d992-hortense-humus.jpg?auto=compress&crop=center&fit=crop&format=auto&h=832&w=1920',
-#   user: users.sample
-#   )
+restaurant  = Restaurant.create!(
+  name: 'Palo Alto',
+  address: '35 Rue Tasson-Snel, 1060 Saint-Gilles',
+  website: 'https://www.paloaltoginfood.be/',
+  phone_number: '0485 97 72 05',
+  photo_url: 'https://lp-cms-production.imgix.net/2019-06/8a1512e5c8a631f6d8b133def4bdcb64-lpl-palo_alto-1.jpg?auto=compress&crop=center&fit=crop&format=auto&h=832&w=1920',
+  user: users.sample
+  )
 
-# 15.times do
-#   puts "Creating a Restaurant"
-#   restaurant = Restaurant.create!(
-#     name: Faker::Restaurant.name,
-#     address: Faker::Address.full_address,
-#     # address:  Faker::Config.locale=(nl_BE).address,
-#     # latitude: rand(50..51),
-#     # longitude: rand(4..5),
-#     user: user,
-#   )
+
+restaurant  = Restaurant.create!(
+  name: 'Big Mama',
+  address: 'Oud Korenhuis 41, 1000 Bruxelles',
+  website: 'https://bigmama.be/',
+  phone_number: '02 513 36 59',
+  photo_url: 'https://s3-media0.fl.yelpcdn.com/bphoto/tuAYds0YF1TGDbAxeE-Kng/o.jpg',
+  user: users.sample
+  )
+
+
+restaurant  = Restaurant.create!(
+  name: 'Hortense & Humus',
+  address: 'Rue de Vergnies 2, 1000 Bruxelles',
+  website: 'https://pleinpubliek.be/',
+  phone_number: '0479 54 44 87',
+  photo_url: 'https://lp-cms-production.imgix.net/2019-06/2683622f9fc73887ceafb413a3e2d992-hortense-humus.jpg?auto=compress&crop=center&fit=crop&format=auto&h=832&w=1920',
+  user: users.sample
+  )
+
+15.times do
+  puts "Creating a Restaurant"
+  restaurant = Restaurant.create!(
+    name: Faker::Restaurant.name,
+    address: Faker::Address.full_address,
+    # address:  Faker::Config.locale=(nl_BE).address,
+    # latitude: rand(50..51),
+    # longitude: rand(4..5),
+    user: user,
+  )
 restaurants = Restaurant.all
 restaurants.each do |restaurant |
   puts "Creating Tables"
@@ -153,7 +153,7 @@ restaurants.each do |restaurant |
   end
 
   puts "Creating Reviews"
-  10.times do 
+  10.times do
     review = Review.create!(
       content: Faker::Quote.yoda,
       rating: [3, 4, 5].sample,
