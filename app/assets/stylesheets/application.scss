@@ -13,6 +13,12 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "orders/index";
+@import "restaurants/index";
+
+html {
+  font-size: 1em;
+}
 
 .page-container {
   display: grid;
