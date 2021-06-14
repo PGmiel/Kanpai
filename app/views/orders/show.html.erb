@@ -11,6 +11,7 @@
           <% @hot_drinks.each do |hot_drink|%>
             <li class="d-flex justify-content-between">
               <p><%= hot_drink.item_name%></p>
+              <p><%= humanized_money_with_symbol(hot_drink.price) %></p>
               <div class="form">
                 <%= simple_form_for [@order, @order_item], remote: true, html: {class: "form-inline"} do |f| %>
                   <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
@@ -30,6 +31,7 @@
           <% @beers.each do |beer|%>
             <li class="d-flex justify-content-between">
               <p><%= beer.item_name %></p>
+              <p><%= humanized_money_with_symbol(beer.price) %></p>
               <div class="form">
                 <%= simple_form_for [@order, @order_item], remote: true, html: {class: "form-inline"} do |f| %>
                   <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
@@ -48,6 +50,7 @@
           <% @wines.each do |wine|%>
             <li class="d-flex justify-content-between">
               <p><%= wine.item_name %></p>
+              <p><%= humanized_money_with_symbol(wine.price) %></p>
               <div class="form">
                 <%= simple_form_for [@order, @order_item], remote: true, html: {class: "form-inline"} do |f| %>
                   <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
@@ -88,6 +91,7 @@
             <% @starters.each do |starter|%>
               <li class="d-flex justify-content-between">
                 <p><%= starter.item_name %></p>
+                <p><%= humanized_money_with_symbol(starter.price) %></p>
                 <div class="form">
                   <%= simple_form_for [@order, @order_item], remote: true, html: {class: "form-inline"} do |f| %>
                     <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
@@ -106,6 +110,7 @@
           <% @main_dishes.each do |main_dishe|%>
             <li class="d-flex justify-content-between">
               <p><%= main_dishe.item_name %></p>
+              <p><%= humanized_money_with_symbol(main_dishe.price) %></p>
               <div class="form">
                 <%= simple_form_for [@order, @order_item], remote: true, html: {class: "form-inline"} do |f| %>
                   <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
@@ -124,6 +129,7 @@
           <% @desserts.each do |dessert|%>
             <li class="d-flex justify-content-between">
               <p><%= dessert.item_name %></p>
+              <p><%= humanized_money_with_symbol(dessert.price) %></p>
               <div class="form">
                 <%= simple_form_for [@order, @order_item], remote: true, html: {class: "form-inline"} do |f| %>
                   <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
@@ -193,19 +199,7 @@
             <% end %>
           <% end %>
         </ul>
-         <%= link_to "Close Table", closing_order_path(@order), class: "btn btn-warning" %>
+         <%= link_to "Pay Now", order_new_payment_path(@order), class: "btn btn-warning" %>
       </div>
   </div>
 <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
