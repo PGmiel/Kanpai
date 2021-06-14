@@ -8,7 +8,7 @@
 .card-product {
   overflow: hidden;
   height: 11.25em;
-  background: white;
+  background: $white;
   box-shadow: 0 0 1em rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
@@ -37,7 +37,7 @@
     color: $dark-green;
     &:hover {
       text-decoration: none;
-      color: $rose;
+      color: $pink;
     }
     &:visited {
       text-decoration: none;
