@@ -5,7 +5,7 @@
   <%= link_to 'Home', root_path %>
   <%= link_to "Back", :back %>
   <%= link_to 'Add a Review', new_restaurant_review_path(@restaurant) %>
- 
+
   <% x = 0%>
   <% @restaurant.tables.each do |table|%>
     <%if table.status != "booked"%>
@@ -22,27 +22,27 @@
   <% else%>
     <div class='available' style='background-color: green'><%= "green" %></div>
   <% end %>
-    
+
 
   <%= month_calendar do |date| %>
   <div><%= date.day %></div>
   <div id="<%= date.day %>-<%= date.month %>" data-month = "<%= date.month %>" ></div>
 <% end %>
-      
-    <div>
-        <% @bookings.each do |booking| %>
-      <% if booking.user_id == current_user.id  %>
+
+    <!-- <div>
+        <%# @bookings.each do |booking| %>
+      <%# if booking.user_id == current_user.id  %>
         <ul>
-          <li><%= " you booked a table at #{booking.starts_at}" %></li> 
+          <li><%#= " you booked a table at #{booking.starts_at}" %></li>
           <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
-          <li><%= booking.status %></li>
-          <li><%= booking.table.restaurant.name %></li>
-          <li><%= booking.table.restaurant.address %></li>
-          <li><%= booking.table.id %></li>
+          <li><%#= booking.status %></li>
+          <li><%#= booking.table.restaurant.name %></li>
+          <li><%#= booking.table.restaurant.address %></li>
+          <li><%#= booking.table.id %></li>
         </ul>
-      <% end %>
-    <% end %>
-    </div>
+      <%# end %>
+    <%# end %>
+    </div> -->
 
   <% @restaurant.reviews.each do |review| %>
     <li class="list-group-item">
