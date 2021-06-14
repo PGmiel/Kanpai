@@ -30,6 +30,9 @@ class OrdersController < ApplicationController
   def create_order
     @table = Table.find(params[:table_id])
     @order = Order.create(table: @table, status: "pending")
+    @table.update(status: "booked")
+    current_booking = @table.check_if_booking
+    current_booking.update(status: "done") if current_booking.present?
     redirect_to order_path(@order)
   end
 end
