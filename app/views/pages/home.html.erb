@@ -6,9 +6,19 @@
     <div class="homepage-title">
       <h1>Find a table in your favorite places !</h1>
     </div>
-    <%= link_to "See Restaurants", restaurants_path, class: "btn btn-warning" %>
-  </div>
+      <%#= link_to "See Restaurants", restaurants_path, class: "btn btn-warning" %>
+  <div class="form-container d-flex justify-content-center">
+          <%= form_tag restaurants_path, method: :get, class: "form-inline my-4" do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Where are you going?"
+          %>
+          <%= submit_tag "Submit", class: "btn btn-warning" %>
+        <% end %>
+      </div>
 </div>
+    </div>
 <div class="container cards-container">
   <div class = "row homepage_cards justify-content-center">
     <!-- <div class="homepage_cards"> -->
