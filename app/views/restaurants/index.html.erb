@@ -1,7 +1,16 @@
 <!-- <div class="content mt-5"> -->
 <div class="row mb-5">
+    <!-- Map -->
+    <div class="map sticky-top col-lg-6 col-md-12 col-12-sm">
+        <div id="map"
+             style="width: 100%; height: 90vh;"
+             data-markers="<%= @markers.to_json %>"
+             data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+    </div>
+
     <!-- Filter -->
-    <div class="restaurant-cards pl-5 pr-0 col-lg-6 col-md-6 col-12-sm">
+    <div class="restaurant-cards pr-5 pl-0 col-lg-6 col-md-12 col-12-sm">
       <div class="form-container d-flex">
           <%= form_tag restaurants_path, method: :get, class: "form-inline my-4" do %>
           <%= text_field_tag :query,
@@ -16,16 +25,5 @@
         <% @restaurants.each do |restaurant| %>
           <%= render "card", restaurant: restaurant %>
         <% end %>
-    </div>
-    <!-- Map -->
-    <div class="pl-0 col-lg-6 col-md-6 col-12-sm">
-      <!-- Map -->
-      <div class="map sticky-top">
-          <div id="map"
-               style="width: 100%; height: 90vh;"
-               data-markers="<%= @markers.to_json %>"
-               data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-          </div>
-      </div>
     </div>
 </div>
