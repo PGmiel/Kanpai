@@ -26,6 +26,11 @@ gem 'pg_search', '~> 2.3.0'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+# for payment / stripe
+gem 'money-rails'
+gem 'stripe'
+gem 'stripe_event'
+
 # for sidekiq
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'

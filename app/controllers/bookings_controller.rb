@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
     @booking.table = table
     @booking.user = current_user
     @booking.status = "booked"
-    if @booking.save
+    if @booking.save!
       CheckTableStatusJob.set(wait_until: @booking.starts_at).perform_later(table.id)
       redirect_to restaurants_path
     else

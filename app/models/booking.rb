@@ -11,7 +11,7 @@ class Booking < ApplicationRecord
   def check_range
     @bookings = self.table.restaurant.tables.each do |table|
       table.bookings.each do |booking|
-        unless (booking.ends_at <= starts_at) || (booking.starts_at >= ends_at)
+        if (booking.ends_at <= starts_at) && (booking.starts_at >= ends_at)
           errors.add(:starts_at, "Sorry, that time slot is taken")
           errors.add(:ends_at, "Take a later Spot after #{self.ends_at}")
         end
