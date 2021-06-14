@@ -34,12 +34,20 @@ p {
   color: $dark-gray;
 }
 
+
 h1, h2, h3 {
   font-family: 'Varela Round', sans-serif;
   font-weight: bold;
 }
+
+p {
+  font-weight: lighter;
+}
+
+
 h1 {
   font-size: 1.875em;
+  font-weight: 600px;
 }
 h2 {
   font-size: 1.5625em;

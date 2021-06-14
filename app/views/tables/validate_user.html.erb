@@ -5,7 +5,7 @@
     <div class="col-12">
       <h1>Wecome!</h1>
       <p>There is a booking coming up</p>
-      <p>Are you: <%= @user.full_name %> ?</p>
+      <p>Are you: <%= @user %> ?</p>
       <%= link_to "Confirm it's you", create_order_path(@table), method: :post, class: "btn btn-light" %>
       <%= link_to "It is not me", root_path, class: "btn btn-warning" %>
     </div>
