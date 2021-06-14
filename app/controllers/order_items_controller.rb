@@ -20,8 +20,9 @@ class OrderItemsController < ApplicationController
     @order = Order.find(params[:order_id])
     @pending_orders = @order.order_items.select { |order_item| order_item.status == "pending" }
     @pending_orders.each { |pending_order| pending_order.update(status: "sent") }
-    @bill = @pending_orders.map { |pending_order| pending_order.total_price }
-    @order.update(amount_cents: @bill.sum)
+    bill = @pending_orders.map { |pending_order| pending_order.total_price }
+    total_bill = @order.amount_cents + bill.sum
+    @order.update(amount_cents: total_bill)
     redirect_to order_path(@order, anchor: "ordered")
   end
 
