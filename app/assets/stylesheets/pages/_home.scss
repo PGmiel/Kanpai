@@ -18,6 +18,19 @@
   font-weight: bolder;
   text-shadow: 0 0 10px rgba(0,0,0,0.7);
   margin: 20px;
+
+  // margin-top: 100px;
+  // margin-bottom: 500px;
+}
+
+.blank {
+  padding: 200px;
+}
+
+.homepage-title {
+  h1 {
+    color: $white;
+
   margin-top: 100px;
   margin-bottom: 500px;
    &:hover {

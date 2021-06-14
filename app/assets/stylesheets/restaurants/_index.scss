@@ -2,8 +2,8 @@
 
 
 .content {
-  display:flex;
-  height: 300vh;
+  display: flex;
+  height: 100vh;
 }
 
 // .cards {
@@ -13,31 +13,67 @@
 //   grid-gap: 16px;
 //   padding: 16px;
 // }
-#map {
-  height: 90vh;
-  position: sticky;
-  top: 0;
-}
 
 /*Media Queries*/
 
 /*Smallest device*/
-@media (min-width: 100px) and (max-width: 575px) {
 
-  // #map {
-  //   display: none;
-  // }
-}
-
-/*Small devices (landscape phones, 576px and up)*/
-@media (min-width: 576px) {
+@media (min-width: 100px) and (max-width: 630px) {
   html {
-    font-size: 0.9em;
+    font-size: 1em !important;
   }
-  // #map {
-  //   display: none;
-  // }
+  .map {
+    position: relative !important;
+  }
+  .restaurant-cards {
+    padding-left: 3rem !important;
+  }
+  .card-product {
+    margin-right: 0 !important;
+    height: 364px;
+    width: 100%;
+    display: block;
+  }
 }
+
+@media (min-width: 630px) {
+  html {
+    font-size: 1em !important;
+  }
+  .map {
+    position: relative !important;
+  }
+  .restaurant-cards {
+    padding-left: 3rem !important;
+  }
+  .card-product {
+    margin-right: 0 !important;
+    // height: 364px;
+    // width: 100%;
+    // display: block;
+  }
+}
+
+
+
+@media (min-width: 992px) {
+  html {
+    font-size: 0.8em !important;
+  }
+}
+
+@media (min-width: 1100px) {
+  html {
+    font-size: 0.9em !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  html {
+    font-size: 1em !important;
+  }
+}
+
 
 /*Medium devices (tablets, 768px and up)*/
 // @media (min-width: 1200px) {
