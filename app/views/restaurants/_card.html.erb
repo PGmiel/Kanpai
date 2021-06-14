@@ -23,9 +23,9 @@
         <% if restaurant.reviews.count == 0 %>
           <p>Rating: No review yet</p>
         <% elsif restaurant.reviews.count == 1 %>
-          <p>Rating: <%="#{restaurant.average_rating}/5 - #{restaurant.reviews.count} review"%></p>
+          <p>Rating: <%="#{restaurant.average_rating.ceil(2)}/5 - #{restaurant.reviews.count} review"%></p>
         <% else %>
-          <p>Rating: <%="#{restaurant.average_rating}/5 - #{restaurant.reviews.count} reviews"%></p>
+          <p>Rating: <%="#{restaurant.average_rating.ceil(2)}/5 - #{restaurant.reviews.count} reviews"%></p>
         <% end %>
       </li>
     </ul>
