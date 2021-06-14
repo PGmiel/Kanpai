@@ -1,8 +1,31 @@
-
 <%= link_to restaurant_path(restaurant) do %>
-<img class='image-popup' src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80" alt="bar">
+<div class="card-trip">
+<img src='<%= restaurant.photo_url %>'>
+<h2 class="card-trip-rating"> <%= restaurant.average_rating.ceil(2)%>/5 <span id='weak-font'>(<%= restaurant.reviews.count%>)</span> </h2> 
+  <div class="card-trip-infos">
+  <div class="card-trip-star"> <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false" style="height: 11px; width: 11px; fill: currentcolor;"><path d="M972 380c9 28 2 50-20 67L725 619l87 280c11 39-18 75-54 75-12 0-23-4-33-12L499 790 273 962a58 58 0 0 1-78-12 50 50 0 0 1-8-51l86-278L46 447c-21-17-28-39-19-67 8-24 29-40 52-40h280l87-279c7-23 28-39 52-39 25 0 47 17 54 41l87 277h280c24 0 45 16 53 40z" style="color: pink;"></path></svg></div>
     <div>
-      <%= link_to restaurant.name.capitalize, restaurant_path(restaurant) %>
+      <h1><%= link_to restaurant.name.capitalize, restaurant_path(restaurant) %></h1>
+      <p><%= restaurant.address.capitalize %></p>
       
+    <div id="heart-popup">
+      <%= link_to restaurant_favoritize_path(restaurant), method: :post do %>
+        <%if current_user %>
+          <% if current_user.favorited?(restaurant) %>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+            </svg>
+          <% else %>
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+              <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+            </svg>
+          <% end %>
+        <% end %>
+      <% end %>
     </div>
+ 
+    </div>
+  </div>
+</div>
+
 <%end%>
