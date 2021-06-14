@@ -12,9 +12,9 @@
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   display: flex;
   align-items: center;
+  color: white ;
   justify-content: space-around;
   font-size: 22px;
-  color: white;
   font-weight: bolder;
   text-shadow: 0 0 10px rgba(0,0,0,0.7);
   margin: 20px;
@@ -25,4 +25,13 @@
       transform: scale(1.2);
       transition: transform .2s;
   }
+  a{
+   text-decoration: none;
+   color: white ;
+   &:hover{
+    text-decoration: none;
+    color: pink;
+   }
+  }
 }
+
