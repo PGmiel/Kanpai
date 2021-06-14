@@ -44,7 +44,7 @@
     <% end %>
     </div>
 
-  <% @restaurant.reviews.each do |review| %>
+  <% @restaurant.reviews.first(5).each do |review| %>
     <li class="list-group-item">
       <small>
         <% count = 0 %>
