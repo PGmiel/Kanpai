@@ -5,7 +5,7 @@ const initFlatpickr = () => {
     altInput: true,
     allowInput: true,
     enableTime: true,
-    dateFormat: "H:i",
+    dateFormat: "Y-m-d H:i",
     time_24hr: true
   });
   // ".timepicker", {
