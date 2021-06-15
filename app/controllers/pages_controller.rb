@@ -13,4 +13,7 @@ class PagesController < ApplicationController
 
   def thank_you
   end
+
+  def user_profile
+  end
 end
