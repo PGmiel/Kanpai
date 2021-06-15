@@ -24,6 +24,7 @@ require("channels")
 // External imports
 import "bootstrap";
 import 'mapbox-gl/dist/mapbox-gl.css';
+import $ from 'jquery';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -36,6 +37,9 @@ import { loadDynamicBannerText } from '../components/banner';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  $(document).ready(function() {
+    $(".dropdown-toggle").dropdown();
+});
   const mapElement = document.getElementById('map');
   if (mapElement) {
     initMapbox();
@@ -43,4 +47,5 @@ document.addEventListener('turbolinks:load', () => {
   initFlatpickr();
   // initUpdateNavbarOnScroll();
   loadDynamicBannerText();
+  
 })
