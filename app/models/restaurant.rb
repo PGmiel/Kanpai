@@ -55,7 +55,7 @@ class Restaurant < ApplicationRecord
 
   def color
     if available?
-      if pourcentage_of_table_available <= 20
+      if pourcentage_of_table_available <= 40
         return "#EB8600"
       else
         return "#067D54"
