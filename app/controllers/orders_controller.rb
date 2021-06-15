@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   skip_before_action :authenticate_user!
 
   def update
-    @order =  Order.find(params[:order_id])
+    @order = Order.find(params[:order_id])
   end
 
   def show
