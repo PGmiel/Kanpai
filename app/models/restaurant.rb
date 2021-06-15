@@ -25,13 +25,11 @@ class Restaurant < ApplicationRecord
 
   def find_table(starts_at, ends_at, number_of_customers)
     available_tables = tables.where("capacity >= ?", number_of_customers).order(:capacity)
-    p available_tables
     available_table = available_tables.detect do |table|
       booking = table.bookings.where(starts_at: starts_at..ends_at)
-      p booking
       booking.empty?
     end
-    p available_table
+    return available_table
   end
 
   def number_of_tables_available
