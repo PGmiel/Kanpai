@@ -130,17 +130,17 @@ restaurant  = Restaurant.create!(
   user: users.sample
   )
 
-15.times do
-  puts "Creating a Restaurant"
-  restaurant = Restaurant.create!(
-    name: Faker::Restaurant.name,
-    address: Faker::Address.full_address,
-    # address:  Faker::Config.locale=(nl_BE).address,
-    # latitude: rand(50..51),
-    # longitude: rand(4..5),
-    user: users.sample
-    )
-end
+# 15.times do
+#   puts "Creating a Restaurant"
+#   restaurant = Restaurant.create!(
+#     name: Faker::Restaurant.name,
+#     address: Faker::Address.full_address,
+#     # address:  Faker::Config.locale=(nl_BE).address,
+#     # latitude: rand(50..51),
+#     # longitude: rand(4..5),
+#     user: users.sample
+#     )
+# end
 
 restaurants = Restaurant.all
 restaurants.each do |restaurant|
