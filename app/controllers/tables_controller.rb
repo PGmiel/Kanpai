@@ -13,6 +13,7 @@ class TablesController < ApplicationController
       redirect_to order_path(@order)
     else
       @order = Order.create(table: @table, status: "pending")
+      p @order
       @table.update(status: "booked")
       redirect_to order_path(@order)
     end
