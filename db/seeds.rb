@@ -25,7 +25,7 @@ user_1 = User.create!(
   password: "123123",
   status_owner: 'owner'
   )
- users << user_1
+users << user_1
 
 user_2 = User.create!(
   first_name: 'Eric',
@@ -34,7 +34,7 @@ user_2 = User.create!(
   password: "123123",
   status_owner: 'owner'
   )
-  users << user_2
+users << user_2
 
 user_3 = User.create!(
   first_name: 'Test',
@@ -42,7 +42,7 @@ user_3 = User.create!(
   email: 'testtest@cn.com',
   password: "123123",
   )
-  users << user_3
+users << user_3
 
 puts "Creating a Restaurant"
 restaurant  = Restaurant.create!(
@@ -138,10 +138,12 @@ restaurant  = Restaurant.create!(
     # address:  Faker::Config.locale=(nl_BE).address,
     # latitude: rand(50..51),
     # longitude: rand(4..5),
-    user: user,
-  )
+    user: users.sample
+    )
+end
+
 restaurants = Restaurant.all
-restaurants.each do |restaurant |
+restaurants.each do |restaurant|
   puts "Creating Tables"
   rand(5..10).times do |n|
     table = Table.create!(
@@ -159,7 +161,7 @@ restaurants.each do |restaurant |
       rating: [3, 4, 5].sample,
       user: users.sample,
       restaurant: restaurants.sample
-    )
+      )
   end
 
   puts "Creating 1 Menu"
@@ -170,7 +172,7 @@ restaurants.each do |restaurant |
   puts "Creating Menu Items"
   10.times do
     menu_items = MenuItem.create!(
-      item_name: [Faker::Food.dish, Faker::Dessert.variety, Faker::Beer.name].sample ,
+      item_name: [Faker::Food.dish, Faker::Dessert.variety, Faker::Beer.name].sample,
       category: ["Hot Drinks", "Dessert", "Beers", "Wine", "Main Dishes", "Starter"].sample,
       price: rand(200..1500),
       menu: menu,
@@ -178,7 +180,3 @@ restaurants.each do |restaurant |
       )
   end
 end
-
-
-
-
