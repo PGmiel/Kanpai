@@ -1,0 +1,32 @@
+.restaurant-show-menu {
+  margin-top: 8em;
+  h1 {
+    border-bottom: 1px solid $dark-green;
+  }
+}
+
+.reviews-restaurant {
+  height: 25em;
+  width: 100%;
+  background-color: $light-gray;
+  border-bottom: 11px solid $white;
+}
+
+.add-review {
+  a {
+    color: $dark-green;
+    text-decoration: none;
+    &:hover {
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}
+
+.wrap-review-content {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}

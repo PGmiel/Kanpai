@@ -12,3 +12,55 @@
   font-size: 200%;
   font-weight: bolder;
 }
+
+.banner-show-restaurant {
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+  text-align: center;
+  padding-top: 40vh;
+  position: relative;
+  .info-banner {
+    width: 75vw;
+    // position: absolute;
+    // left: 116px;
+    // bottom: -5px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .info-left {
+      h1{
+        margin-bottom: 0px;
+        color: $white !important;
+        text-align: start;
+      }
+      p {
+        color: $white !important;
+        margin: 0px;
+        text-align: start;
+      }
+    }
+  }
+  .info-bottom {
+    width: 75vw;
+    margin: 0px auto;
+    margin-top: 32px;
+    display: flex;
+    justify-content: space-between;
+    .right {
+      border-radius: 11px;
+      height: 1.75em;
+      width: 10.7em;
+      p {
+        margin-bottom: 0px;
+      }
+    }
+    .left{
+      p {
+        margin-bottom: 0px;
+      }
+    }
+  }
+}
+

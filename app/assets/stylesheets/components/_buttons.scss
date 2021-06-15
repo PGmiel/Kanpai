@@ -10,3 +10,18 @@
 
   }
 }
+
+.button-booking-large {
+  background-color: $white;
+  padding: 0.375em 0.75em;
+  border: 0.0625em solid $white;
+  color: $dark-green;
+  font-size: 1.075em;
+  border-radius: 11px;
+  &:hover {
+    color: $white;
+    background-color: $dark-green;
+    border: 0.0625em solid $dark-green;
+
+  }
+}
