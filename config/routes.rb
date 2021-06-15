@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   get "validate_user/:table_id", to: "tables#validate_user", as: :validate_user
   post "create_order/:table_id", to: "orders#create_order", as: :create_order
   mount StripeEvent::Engine, at: '/stripe-webhooks'
+  get "profile", to: "pages#user_profile", as: :user_profile
 
   require "sidekiq/web"
   authenticate :user, ->(user) { user.admin? } do
