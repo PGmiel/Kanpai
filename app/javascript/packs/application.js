@@ -34,6 +34,7 @@ import { initFlatpickr } from "../plugins/flatpickr";
 // import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { loadDynamicBannerText } from '../components/banner';
 
+
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
@@ -49,3 +50,5 @@ document.addEventListener('turbolinks:load', () => {
   loadDynamicBannerText();
   
 })
+
+import "controllers"
