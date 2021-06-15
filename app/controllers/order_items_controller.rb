@@ -8,7 +8,7 @@ class OrderItemsController < ApplicationController
     @order_item.order = @order
     if @order_item.save
       @order_item.update(status: "pending")
-      @order_item.update(total_price: @order_item.quantity * @menu_item.price)
+      @order_item.update(price_cents: @order_item.quantity * @menu_item.price)
       redirect_to order_path(@order, anchor: "pending")
     else
       flash[:notice] = "Not available"
@@ -20,7 +20,7 @@ class OrderItemsController < ApplicationController
     @order = Order.find(params[:order_id])
     @pending_orders = @order.order_items.select { |order_item| order_item.status == "pending" }
     @pending_orders.each { |pending_order| pending_order.update(status: "sent") }
-    bill = @pending_orders.map { |pending_order| pending_order.total_price }
+    bill = @pending_orders.map { |pending_order| pending_order.price_cents }
     total_bill = @order.price_cents + bill.sum
     @order.update(price_cents: total_bill)
     redirect_to order_path(@order, anchor: "ordered")
@@ -35,6 +35,6 @@ class OrderItemsController < ApplicationController
   private
 
   def order_item_params
-    params.require(:order_item).permit(:quantity, :menu_item_id, :status, :total_price)
+    params.require(:order_item).permit(:quantity, :menu_item_id, :status, :price_cents)
   end
 end
