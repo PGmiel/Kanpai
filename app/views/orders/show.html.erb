@@ -170,7 +170,7 @@
                   <li>
                       Your ordered: <strong><%= order_item.menu_item.item_name %></strong>
                       - <%= order_item.quantity %>X -
-                      for: <%= humanized_money_with_symbol(order_item.price_cents / 100) %>
+                      for: <%= humanized_money_with_symbol(order_item.price_cents.to_f / 100) %>
                       | <%= link_to "Remove", order_item_path(order_item), method: :delete, remote: :true  %>
                   </li>
                 <% end %>
@@ -189,10 +189,10 @@
             <% @bill = [] %>
               <% @order.order_items.each do |order_item| %>
                 <% if order_item.status == "sent" %>
-                  <% @bill << order_item.price_cents %>
+                  <% @bill << order_item.price_cents.to_f %>
                   <li>
                       <strong><%= order_item.menu_item.item_name %></strong>
-                      for: <%= humanized_money_with_symbol(order_item.price_cents / 100) %>
+                      for: <%= humanized_money_with_symbol(order_item.price_cents.to_f / 100) %>
                   </li>
                 <% end %>
               <% end %>
