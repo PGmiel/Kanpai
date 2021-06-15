@@ -1,18 +1,41 @@
-<div class="push">
+  
+<div class='profile'>
+    <div class='container'>
+      <div class='container-profile'>
+        <div class="profile-details">
+            <h4>My profile</h4>
+            <h5><%= current_user.first_name %> <%= current_user.last_name %></h5>
+            <p><%= current_user.email %></p>
+            <%= link_to "Edit",  edit_user_registration_path(current_user), class: "btn btn-dark" %>
+        </div>
+      </div>
+    </div>
 </div>
-<div class="container">
-  <% @bookings.each do |booking| %>
-    <% if booking.user_id == current_user.id  %>
-      <ul>
-        <li><%= " you booked a table at #{booking.starts_at}" %></li> 
-        <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
-        <li><%= booking.status %></li>
-        <li><%= booking.table.restaurant.name %></li>
-        <li><%= booking.table.restaurant.address %></li>
-        <li><%= booking.table.id %></li>
-      </ul>
+  
+<div class="card-category-booking" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+  My bookings
+</div>
+
+  
+  <div class="push">
+  </div>
+  <div class="container container-booking">
+    <% @bookings.each do |booking| %>
+      <div class="card-booking">
+      <img src='<%= booking.table.restaurant.photo_url %>'>
+        <div class="card-booking-info">
+          <% if booking.user_id == current_user.id  %>
+           
+                <%= " you booked a table at" %> 
+                <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
+                <%#= booking.status %>
+                <h1><%= booking.table.restaurant.name %></h1>
+                <p><%=booking.starts_at%></p>
+                <p><%= booking.table.restaurant.address %></p>
+                <%#= booking.table.id %>
+             
+          <% end %>
+        </div>
+      </div>
     <% end %>
-  <% end %>
-</div>
-<div class="push">
-</div>
+  </div>
