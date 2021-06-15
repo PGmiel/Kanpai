@@ -20,7 +20,7 @@ class PaymentsController < ApplicationController
     @order.order_items.map do |order_item|
       {
         name: order_item.menu_item.item_name,
-        price_cents: order_item.total_price,
+        amount: order_item.total_price,
         currency: 'eur',
         quantity: order_item.quantity
       }
