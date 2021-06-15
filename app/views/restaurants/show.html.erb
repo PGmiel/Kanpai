@@ -1,33 +1,132 @@
-<div class=container>
-  <h2><%= @restaurant.name %></h2>
-  <h2><%= @restaurant.address %></h2>
+<div class="banner-show-restaurant" style="background-image: linear-gradient(to bottom right, rgba(0, 47, 75, .5), rgba(255, 204, 218, 0.5)), url(<%= @restaurant.photo_url %>);">
+  <div class="info-banner">
+    <div class="info-left">
+      <h1><%= @restaurant.name %></h1>
+      <% if @restaurant.reviews.count == 0 %>
+        <p>No review yet</p>
+      <% elsif @restaurant.reviews.count == 1 %>
+        <p><%="#{@restaurant.average_rating.ceil(1)}/5 - #{@restaurant.reviews.count} review"%></p>
+      <% else %>
+        <p><%="#{@restaurant.average_rating.ceil(1)}/5 - #{@restaurant.reviews.count} reviews"%></p>
+      <% end %>
+    </div>
+    <div class="info-right">
+      <button type="button" class="button-booking-large">
+        book a table here
+      </button>
+    </div>
+  </div>
+  <div class="info-bottom">
+    <div class="left">
+      <p><%= @restaurant.address %></p>
+    </div>
+    <div class="right" style="border: 1px solid <%=@restaurant.color%>">
+      <% if @restaurant.number_of_tables_available == 0 %>
+        <p style="color: <%= @restaurant.color%>">Fully Booked</p>
+      <% elsif @restaurant.number_of_tables_available == 1 %>
+        <p style="color: <%= @restaurant.color%>"><%="#{@restaurant.number_of_tables_available} table left"%></p>
+      <% else %>
+        <p style="color: <%= @restaurant.color%>"><%="#{@restaurant.number_of_tables_available} tables available"%></p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<!-- Menu -->
+<div class="container restaurant-show-menu">
+  <h1>Menu</h1>
+  <div class="container drinks my-5">
+    <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: #F4F4F4; height: 60px">Drinks</h2>
+    <div class="menu-item-infos mx-3 mt-4">
+      <% if @hot_drinks.present? %>
+        <h4>Hot Drinks</h4>
+        <ul>
+          <% @hot_drinks.each do |hot_drink|%>
+            <li class="d-flex justify-content-between">
+              <p><%= hot_drink.item_name%></p>
+              <%#= render 'orders/minus_plus_button' %>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
 
-  <%= link_to 'Home', root_path %>
-  <%= link_to "Back", :back %>
-  <%= link_to 'Add a Review', new_restaurant_review_path(@restaurant) %>
+      <% if @beers.present? %>
+        <h4>Beers</h4>
+        <ul>
+          <% @beers.each do |beer|%>
+            <li class="d-flex justify-content-between">
+              <p><%= beer.item_name %></p>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
 
-  <% x = 0%>
-  <% @restaurant.tables.each do |table|%>
-    <%if table.status != "booked"%>
-      <% x += 1%>
-    <%end%>
-  <%end%>
-  <%="#{x} tables available / #{@restaurant.tables.count} tables"%>
-  <% available_table = x%>
-  <% total_table = @restaurant.tables.count%>
-  <% if available_table == 0%>
-    <div class='unavailable' style='background-color: red'><%= "red" %></div>
-  <% elsif available_table/total_table < 0.25%>
-    <div class='few_places' style='background-color: orange'><%= "orange" %></div>
-  <% else%>
-    <div class='available' style='background-color: green'><%= "green" %></div>
-  <% end %>
+      <% if @wines.present? %>
+      <h4>Wines</h4>
+        <ul>
+          <% @wines.each do |wine|%>
+            <li class="d-flex justify-content-between">
+              <p><%= wine.item_name %></p>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+  <div class="container food my-5">
+    <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: #F4F4F4; height: 60px">Food</h2>
+    <div class="menu-item-infos mx-3 mt-4">
+      <% if @starters.present? %>
+        <h4>Starters</h4>
+          <ul>
+            <% @starters.each do |starter|%>
+              <li class="d-flex justify-content-between">
+                <p><%= starter.item_name %></p>
+              </li>
+            <% end %>
+          </ul>
+      <% end %>
+
+      <% if @main_dishes.present? %>
+      <h4>Main Dishes</h4>
+        <ul>
+          <% @main_dishes.each do |main_dishe|%>
+            <li class="d-flex justify-content-between">
+              <p><%= main_dishe.item_name %></p>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <% if @desserts.present? %>
+      <h4>Desserts</h4>
+        <ul>
+          <% @desserts.each do |dessert|%>
+            <li class="d-flex justify-content-between">
+              <p><%= dessert.item_name %></p>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 
-  <%= month_calendar do |date| %>
-  <div><%= date.day %></div>
-  <div id="<%= date.day %>-<%= date.month %>" data-month = "<%= date.month %>" ></div>
-<% end %>
+<div class="pt-5">
+
+</div>
+
+<!-- <div class="pt-5">
+
+  <%#= link_to 'Home', root_path %>
+  <%#= link_to "Back", :back %>
+  <%#= link_to 'Add a Review', new_restaurant_review_path(@restaurant) %>
+</div> -->
+
+<!--   <%#= month_calendar do |date| %>
+  <div><%#= date.day %></div>
+  <div id="<%#= date.day %>-<%#= date.month %>" data-month = "<%#= date.month %>" ></div>
+<%# end %> -->
 
     <!-- <div>
         <%# @bookings.each do |booking| %>
@@ -44,25 +143,43 @@
     <%# end %>
     </div> -->
 
-  <% @restaurant.reviews.first(5).each do |review| %>
-    <li class="list-group-item">
-      <small>
-        <% count = 0 %>
-          <% 5.times do %>
-            <% if review.rating > count %>
-              <i class="fas fa-star"></i>
-            <% else %>
-              <i class="far fa-star"></i>
+
+<!-- Reviews -->
+<div class="reviews-restaurant">
+  <div class="text-center pt-5">
+    <h1>Reviews from our users</h1>
+  </div>
+  <div class="d-flex mt-4 justify-content-center">
+    <% @restaurant.reviews.first(3).each do |review| %>
+      <div class="card-reviews">
+        <li class="list-group-item" style="height: 100%">
+          <small>
+            <% count = 0 %>
+              <% 5.times do %>
+                <% if review.rating > count %>
+                  <i class="fas fa-star"></i>
+                <% else %>
+                  <i class="far fa-star"></i>
+                <% end %>
+                  <% count += 1 %>
+              <% end %>
+          </small>
+            <div class="wrap-review-content">
+              <p><%= review.content %></p>
+            </div>
+            <p><%= review.user.first_name %></p>
+            <% if current_user == review.user %>
+              <%= link_to 'Edit Review', edit_restaurant_review_path(@restaurant, review) %>
             <% end %>
-              <% count += 1 %>
-          <% end %>
-      </small>
-        <p><%= review.content %></p>
-        <p><%= review.user.first_name %></p>
-        <% if current_user == review.user %>
-          <%= link_to 'Edit Review', edit_restaurant_review_path(@restaurant, review) %>
-        <% end %>
-    </li>
-  <% end %>
+        </li>
+      </div>
+    <% end %>
+  </div>
+  <div class="add-review text-center pt-4 pb-5">
+    <button type="button" class="button-booking-large">
+      <%= link_to 'Add a Review', new_restaurant_review_path(@restaurant) %>
+    </button>
+  </div>
+
 </div>
 
