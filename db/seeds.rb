@@ -138,7 +138,7 @@ restaurant  = Restaurant.create!(
     # address:  Faker::Config.locale=(nl_BE).address,
     # latitude: rand(50..51),
     # longitude: rand(4..5),
-    user: user,
+    user: user
   )
 end
 
@@ -172,7 +172,7 @@ restaurants.each do |restaurant |
   puts "Creating Menu Items"
   10.times do
     menu_items = MenuItem.create!(
-      item_name: [Faker::Food.dish, Faker::Dessert.variety, Faker::Beer.name].sample ,
+      item_name: [Faker::Food.dish, Faker::Dessert.variety, Faker::Beer.name].sample,
       category: ["Hot Drinks", "Dessert", "Beers", "Wine", "Main Dishes", "Starter"].sample,
       price: rand(200..1500),
       menu: menu,
@@ -180,7 +180,3 @@ restaurants.each do |restaurant |
       )
   end
 end
-
-
-
-
