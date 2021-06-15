@@ -140,6 +140,8 @@ restaurant  = Restaurant.create!(
     # longitude: rand(4..5),
     user: user,
   )
+end
+
 restaurants = Restaurant.all
 restaurants.each do |restaurant |
   puts "Creating Tables"
