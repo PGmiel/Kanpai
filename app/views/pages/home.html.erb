@@ -7,8 +7,8 @@
       <h1>Find a table in your favorite places !</h1>
     </div>
       <%#= link_to "See Restaurants", restaurants_path, class: "btn btn-warning" %>
-    <div class="form-container d-flex justify-content-center">
-      <%= form_tag restaurants_path, method: :get, class: "form-inline my-4" do %>
+    <div class="form-container">
+      <%= form_tag restaurants_path, method: :get, class: "banner-form" do %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
