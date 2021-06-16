@@ -7,19 +7,18 @@
       <h1>Find a table in your favorite places !</h1>
     </div>
       <%#= link_to "See Restaurants", restaurants_path, class: "btn btn-warning" %>
-  <div class="form-container d-flex justify-content-center">
-          <%= form_tag restaurants_path, method: :get, class: "form-inline my-4" do %>
-          <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Localisation"
-          %>
-          <%= submit_tag "Search", class: "btn btn-warning"%>
-        <% end %>
-      </div>
-
-</div>
+    <div class="form-container d-flex justify-content-center">
+      <%= form_tag restaurants_path, method: :get, class: "form-inline my-4" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Localisation"
+        %>
+        <%= submit_tag "Search", class: "btn btn-warning" %>
+      <% end %>
     </div>
+  </div>
+</div>
 <div class="container cards-container">
   <div class = "row homepage_cards justify-content-center">
     <!-- <div class="homepage_cards"> -->
