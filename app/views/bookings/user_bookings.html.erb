@@ -5,11 +5,13 @@
   <div class="tab">
     <button class='active' data-tab-target="button" data-tabname='coming' class="tablinks" data-action='click->tab#change_tab'>Coming</button>
     <button data-tab-target="button" data-tabname='previous' class="tablinks" data-action='click->tab#change_tab'>Previous</button>
+    <button data-tab-target="button" data-tabname='favourite' class="tablinks" data-action='click->tab#change_tab'>MyFavourites</button>
   </div>
   
    <div id="coming"  data-tab-target='tabs'>
       <div class="container container-booking">
         <% @bookings.each do |booking| %>
+          <%= link_to restaurant_path(booking.table.restaurant) do %>
             <% if booking.status == "booked" %>
               <div class="card-booking">
               <img src='<%= booking.table.restaurant.photo_url %>'>
@@ -25,16 +27,17 @@
                         <%="Address: #{booking.table.restaurant.address}" %>
                       </p>
                     <%#= booking.table.id %>
-                <% end %> 
+                  <% end %> 
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
-   </div>
+    </div>
     <div id="previous" class='d-none' data-tab-target='tabs'>
       <div class="container container-booking">
-        <% @bookings.each do |booking| %>
+        <% @bookings.last(8).each do |booking| %>
               <% if booking.status != "booked" %>
           <div class="card-booking">
           <img src='<%= booking.table.restaurant.photo_url %>'>
@@ -56,5 +59,23 @@
           <% end %>
         <% end %>
       </div>
-   </div>
+    </div>
+    <div id="favourite" class='d-none' data-tab-target='tabs'>
+      <div class="container container-booking">
+        <%current_user.all_favorites.each do |favorite| %>
+            <div class="card-booking">
+              <img src='<%= favorite.favoritable.photo_url %>'>
+                <div class="card-booking-info">
+                    <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
+                    <%#= booking.status %>
+                    <h1><%= favorite.favoritable.name %></h1>
+                      <p> 
+                        <%= favorite.favoritable.address %>
+                      </p>
+                    <%#= booking.table.id %>
+                </div>
+            </div>
+        <% end %>
+      </div>
+    </div>
 </div>
