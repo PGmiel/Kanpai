@@ -7,7 +7,7 @@
     <button data-tab-target="button" data-tabname='previous' class="tablinks" data-action='click->tab#change_tab'>Previous</button>
     <button data-tab-target="button" data-tabname='favourite' class="tablinks" data-action='click->tab#change_tab'>MyFavourites</button>
   </div>
-  
+
    <div id="coming"  data-tab-target='tabs'>
       <div class="container container-booking">
         <% @bookings.each do |booking| %>
@@ -17,8 +17,8 @@
               <img src='<%= booking.table.restaurant.photo_url %>'>
                 <div class="card-booking-info">
                   <% if booking.user_id == current_user.id  %>
-               
-                    <%= " You booked a table at" %> 
+
+                    <%= " You booked a table at" %>
                     <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
                     <%#= booking.status %>
                     <h1><%=booking.table.restaurant.name %></h1>
@@ -27,7 +27,7 @@
                         <%="Address: #{booking.table.restaurant.address}" %>
                       </p>
                     <%#= booking.table.id %>
-                  <% end %> 
+                  <% end %>
                 </div>
               </div>
             <% end %>
@@ -44,7 +44,7 @@
                 <img src='<%= booking.table.restaurant.photo_url %>'>
                   <div class="card-booking-info">
                     <% if booking.user_id == current_user.id %>
-                      <%= " You have been to " %> 
+                      <%= " You have been to " %>
                       <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
                       <%#= booking.status %>
                      <h1><%= booking.table.restaurant.name %></h1>
@@ -53,7 +53,7 @@
                         <%= booking.table.restaurant.address %>
                       </p>
                     <%#= booking.table.id %>
-                  <% end %>  
+                  <% end %>
                 </div>
               </div>
             <% end %>
@@ -71,7 +71,7 @@
                     <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
                     <%#= booking.status %>
                     <h1><%= favorite.favoritable.name %></h1>
-                    <p> 
+                    <p>
                       <%= favorite.favoritable.address %>
                     </p>
                     <%#= booking.table.id %>
