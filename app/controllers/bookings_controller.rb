@@ -11,7 +11,7 @@ class BookingsController < ApplicationController
 
   def create
     starts_at = DateTime.parse(booking_params[:starts_at]).change(hour: booking_params[:ends_at].split(':').first.to_i, min: booking_params[:ends_at].split(':').last.to_i)
-    ends_at = DateTime.parse(booking_params[:ends_at]).change(hour: booking_params[:ends_at].split(':').first.to_i + 2, min: booking_params[:ends_at].split(':').last.to_i)
+    ends_at = DateTime.parse(booking_params[:starts_at]).change(hour: booking_params[:ends_at].split(':').first.to_i + 2, min: booking_params[:ends_at].split(':').last.to_i)
 
     # "ends_at"=>"22:30", "starts_at"=>"2021-06-16"
     @booking = Booking.new
