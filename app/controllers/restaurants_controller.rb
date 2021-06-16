@@ -3,6 +3,7 @@ class RestaurantsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   
   def index
+    @time_slots = time_slots
     if params[:query].present?
       @restaurants = Restaurant.general_search(params[:query])
       # @restaurants = @restaurants.joins(:tables).where("tables.status = ?", "available")
@@ -20,6 +21,15 @@ class RestaurantsController < ApplicationController
         # , image_url: helpers.asset_url('REPLACE_THIS_WITH_YOUR_IMAGE_IN_ASSETS')
       }
     end
+  end
+
+  def time_slots
+    times_array = []
+    (17..23).each do |n|
+    times_array << "#{n}:00"
+    times_array << "#{n}:30"
+    end
+    return times_array
   end
 
   def show

@@ -3,3 +3,8 @@
 <h1>edit your restaurant</h1>
 
 <h1>edit your restaurant</h1>
+
+<ul><%user.favorites_by_type('Restaurant').each do |restaurant| %>
+<li><%= restaurant.name %></li>
+<% end %>
+</ul>

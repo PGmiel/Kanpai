@@ -4,9 +4,7 @@ const initFlatpickr = () => {
   flatpickr(".datepicker", {
     altInput: true,
     allowInput: true,
-    enableTime: true,
-    dateFormat: "H:i",
-    time_24hr: true
+    minDate: "today"
   });
   // ".timepicker", {
   //   altInput: true,

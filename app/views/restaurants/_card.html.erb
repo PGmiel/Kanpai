@@ -30,25 +30,29 @@
       </li>
     </ul>
     <div class="booking-button">
-      <button type="button" class="button-booking" data-toggle="modal" data-target="#exampleModal">
+      <button type="button" class="button-booking" data-toggle="modal" data-target="#exampleModal-<%= restaurant.id %>">
         book a table here
       </button>
-      <div class="container">
       <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="card-container">
+        <div class="modal fade" id="exampleModal-<%= restaurant.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Book a table</h5>
+                <h3 class="card-content" id="exampleModalLabel"></h3>
+                <div class="card-img text-center">
+                  <h3>Book a table</h3>
+                  <%= cl_image_tag restaurant.photo_url %>
+                </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
+              <div class="modal-body form-row">
                 <%= simple_form_for [restaurant, @booking] do |f| %>
-                  <%= f.input :starts_at, as: :string, required: true, input_html: {class: "datepicker"} %>
-                  <%= f.input :ends_at, as: :string, required: true, input_html: {class: "datepicker"} %>
-                  <%= f.input :number_of_customers,as: :select, collection: [1, 2, 3, 4, 5] %>
+                  <%= f.input :starts_at, placeholder: 'Which date?', label: false, as: :string, required: true, input_html: {class: "datepicker"} %>
+                  <%= f.input :ends_at, label: false, prompt: 'What time?', as: :select, collection: @time_slots, required: true %>
+                  <%= f.input :number_of_customers, label: false, placeholder: 'How many persons?', as: :integer, input_html: { min: '0', max: '25', step: '1' } %>
                   <%= f.submit "Submit booking", class: "btn btn-warning" %>
                 <% end %>
               </div>
