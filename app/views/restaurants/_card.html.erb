@@ -30,16 +30,16 @@
       </li>
     </ul>
     <div class="booking-button">
-      <button type="button" class="button-booking" data-toggle="modal" data-target="#exampleModal-<%= restaurant.id %>">
+      <button type="button" class="button-booking" data-toggle="modal" data-target="#restaurant-modal-<%= restaurant.id %>">
         book a table here
       </button>
       <!-- Modal -->
       <div class="card-container">
-        <div class="modal fade" id="exampleModal-<%= restaurant.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="restaurant-modal-<%= restaurant.id %>" tabindex="-1" aria-labelledby="restaurant-modal-<%= restaurant.id %>-label" aria-hidden="true">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                <h3 class="card-content" id="exampleModalLabel"></h3>
+                <h5 class="modal-title card-content" id="restaurant-modal-<%= restaurant.id %>-label">Book a table</h5>
                 <div class="card-img text-center">
                   <h3>Book a table</h3>
                   <%= cl_image_tag restaurant.photo_url %>

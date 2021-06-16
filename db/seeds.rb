@@ -25,7 +25,7 @@ user_1 = User.create!(
   password: "123123",
   status_owner: 'owner'
   )
- users << user_1
+users << user_1
 
 user_2 = User.create!(
   first_name: 'Eric',
@@ -34,7 +34,7 @@ user_2 = User.create!(
   password: "123123",
   status_owner: 'owner'
   )
-  users << user_2
+users << user_2
 
 user_3 = User.create!(
   first_name: 'Test',
@@ -42,7 +42,7 @@ user_3 = User.create!(
   email: 'testtest@cn.com',
   password: "123123",
   )
-  users << user_3
+users << user_3
 
 puts "Creating a Restaurant"
 restaurant  = Restaurant.create!(
@@ -50,7 +50,7 @@ restaurant  = Restaurant.create!(
   address: 'Mont des Arts, 1000 Bruxelles',
   website: 'https://pleinpubliek.be/',
   phone_number: '0485 97 72 05',
-  photo_url: 'https://scontent-bru2-1.xx.fbcdn.net/v/t1.6435-9/166432341_761718487861378_516644447655069420_n.jpg?_nc_cat=105&ccb=1-3&_nc_sid=6e5ad9&_nc_ohc=dAzQVyxNkDEAX9JRq0e&_nc_ht=scontent-bru2-1.xx&oh=2bd2a5ec3ae24a9fcd46bc72837733d3&oe=60C86256',
+  photo_url: 'https://scontent-bru2-1.xx.fbcdn.net/v/t1.6435-9/166432341_761718487861378_516644447655069420_n.jpg',
   user: users.sample
   )
 
@@ -59,7 +59,7 @@ restaurant  = Restaurant.create!(
   address: 'Rue Jean Stas 24, 1060 Saint-Gilles',
   website: 'https://pleinpubliek.be/',
   phone_number: '0485 97 72 05',
-  photo_url: 'https://cdn.shopify.com/s/files/1/0257/8389/4067/files/DSC_4605_copie_1728x.jpg?v=1607093350',
+  photo_url: 'https://cdn.shopify.com/s/files/1/0257/8389/4067/files/DSC_4605_copie_1728x.jpg',
   user: users.sample
   )
 
@@ -68,7 +68,7 @@ restaurant  = Restaurant.create!(
   address: 'Rue Sainte-Catherine 17-19, 1000 Brussels',
   website: 'https://www.nonalife.com/',
   phone_number: '0485 97 72 05',
-  photo_url: 'https://lp-cms-production.imgix.net/2019-06/ecf1567a8e869dce9ef8ea789034177e-lpl-nona-1.jpg?auto=compress&crop=center&fit=crop&format=auto&h=832&w=1920',
+  photo_url: 'https://lp-cms-production.imgix.net/2019-06/ecf1567a8e869dce9ef8ea789034177e-lpl-nona-1.jpg',
   user: users.sample
   )
 
@@ -96,7 +96,7 @@ restaurant  = Restaurant.create!(
   address: 'Avenue Auguste Rodin 8, 1050 Ixelles',
   website: 'http://comptoir-rodin.be/',
   phone_number: '02 203 00 14',
-  photo_url: 'https://lp-cms-production.imgix.net/2019-06/c5ad61c161a1848c663791328abae350-lpl-comptoir_rodin-1.jpg?auto=compress&crop=center&fit=crop&format=auto&h=832&w=1920',
+  photo_url: 'https://lp-cms-production.imgix.net/2019-06/c5ad61c161a1848c663791328abae350-lpl-comptoir_rodin-1.jpg',
   user: users.sample
   )
 
@@ -106,7 +106,7 @@ restaurant  = Restaurant.create!(
   address: '35 Rue Tasson-Snel, 1060 Saint-Gilles',
   website: 'https://www.paloaltoginfood.be/',
   phone_number: '0485 97 72 05',
-  photo_url: 'https://lp-cms-production.imgix.net/2019-06/8a1512e5c8a631f6d8b133def4bdcb64-lpl-palo_alto-1.jpg?auto=compress&crop=center&fit=crop&format=auto&h=832&w=1920',
+  photo_url: 'https://lp-cms-production.imgix.net/2019-06/8a1512e5c8a631f6d8b133def4bdcb64-lpl-palo_alto-1.jpg',
   user: users.sample
   )
 
@@ -126,22 +126,24 @@ restaurant  = Restaurant.create!(
   address: 'Rue de Vergnies 2, 1000 Bruxelles',
   website: 'https://pleinpubliek.be/',
   phone_number: '0479 54 44 87',
-  photo_url: 'https://lp-cms-production.imgix.net/2019-06/2683622f9fc73887ceafb413a3e2d992-hortense-humus.jpg?auto=compress&crop=center&fit=crop&format=auto&h=832&w=1920',
+  photo_url: 'https://lp-cms-production.imgix.net/2019-06/2683622f9fc73887ceafb413a3e2d992-hortense-humus.jpg',
   user: users.sample
   )
 
-15.times do
-  puts "Creating a Restaurant"
-  restaurant = Restaurant.create!(
-    name: Faker::Restaurant.name,
-    address: Faker::Address.full_address,
-    # address:  Faker::Config.locale=(nl_BE).address,
-    # latitude: rand(50..51),
-    # longitude: rand(4..5),
-    user: user,
-  )
+# 15.times do
+#   puts "Creating a Restaurant"
+#   restaurant = Restaurant.create!(
+#     name: Faker::Restaurant.name,
+#     address: Faker::Address.full_address,
+#     # address:  Faker::Config.locale=(nl_BE).address,
+#     # latitude: rand(50..51),
+#     # longitude: rand(4..5),
+#     user: users.sample
+#     )
+# end
+
 restaurants = Restaurant.all
-restaurants.each do |restaurant |
+restaurants.each do |restaurant|
   puts "Creating Tables"
   rand(5..10).times do |n|
     table = Table.create!(
@@ -159,7 +161,7 @@ restaurants.each do |restaurant |
       rating: [3, 4, 5].sample,
       user: users.sample,
       restaurant: restaurants.sample
-    )
+      )
   end
 
   puts "Creating 1 Menu"
@@ -170,7 +172,7 @@ restaurants.each do |restaurant |
   puts "Creating Menu Items"
   10.times do
     menu_items = MenuItem.create!(
-      item_name: [Faker::Food.dish, Faker::Dessert.variety, Faker::Beer.name].sample ,
+      item_name: [Faker::Food.dish, Faker::Dessert.variety, Faker::Beer.name].sample,
       category: ["Hot Drinks", "Dessert", "Beers", "Wine", "Main Dishes", "Starter"].sample,
       price: rand(200..1500),
       menu: menu,
@@ -178,7 +180,3 @@ restaurants.each do |restaurant |
       )
   end
 end
-
-
-
-

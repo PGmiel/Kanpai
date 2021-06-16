@@ -1,0 +1,9 @@
+<div class='container' style='text-align: center'>
+  <h1> Hello, I am 
+      <%=current_user.first_name%>
+      <%=current_user.last_name%>
+    </h1>
+    <p><%=current_user.email%></p>
+    <%= link_to "Edit my profile",  edit_user_registration_path(current_user), class: "btn btn-dark" %>
+  
+</div>

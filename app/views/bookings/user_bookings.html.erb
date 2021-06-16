@@ -1,18 +1,60 @@
-<div class="push">
+<div class="card-category-booking" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
+  <strong>My bookings</strong>
 </div>
-<div class="container">
-  <% @bookings.each do |booking| %>
-    <% if booking.user_id == current_user.id  %>
-      <ul>
-        <li><%= " you booked a table at #{booking.starts_at}" %></li> 
-        <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
-        <li><%= booking.status %></li>
-        <li><%= booking.table.restaurant.name %></li>
-        <li><%= booking.table.restaurant.address %></li>
-        <li><%= booking.table.id %></li>
-      </ul>
-    <% end %>
-  <% end %>
-</div>
-<div class="push">
+<div data-controller='tab'>
+  <div class="tab">
+    <button class='active' data-tab-target="button" data-tabname='coming' class="tablinks" data-action='click->tab#change_tab'>Coming</button>
+    <button data-tab-target="button" data-tabname='previous' class="tablinks" data-action='click->tab#change_tab'>Previous</button>
+  </div>
+  
+   <div id="coming"  data-tab-target='tabs'>
+      <div class="container container-booking">
+        <% @bookings.each do |booking| %>
+            <% if booking.status == "booked" %>
+              <div class="card-booking">
+              <img src='<%= booking.table.restaurant.photo_url %>'>
+                <div class="card-booking-info">
+                  <% if booking.user_id == current_user.id  %>
+               
+                    <%= " You booked a table at" %> 
+                    <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
+                    <%#= booking.status %>
+                    <h1><%=booking.table.restaurant.name %></h1>
+                      <p>
+                        <%="When: #{booking.starts_at.strftime("%B %dth, %Y at %H:%M")}"%><br>
+                        <%="Address: #{booking.table.restaurant.address}" %>
+                      </p>
+                    <%#= booking.table.id %>
+                <% end %> 
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+   </div>
+    <div id="previous" class='d-none' data-tab-target='tabs'>
+      <div class="container container-booking">
+        <% @bookings.each do |booking| %>
+              <% if booking.status != "booked" %>
+          <div class="card-booking">
+          <img src='<%= booking.table.restaurant.photo_url %>'>
+            <div class="card-booking-info">
+              <% if booking.user_id == current_user.id  %>
+               
+                    <%= " You have been to " %> 
+                    <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
+                    <%#= booking.status %>
+                    <h1><%= booking.table.restaurant.name %></h1>
+                      <p>
+                        <%=booking.starts_at.strftime("on %B %d, %Y")%><br>
+                        <%= booking.table.restaurant.address %>
+                      </p>
+                    <%#= booking.table.id %>
+              <% end %>  
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+   </div>
 </div>

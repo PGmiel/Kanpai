@@ -1,205 +1,205 @@
-<div class="container mt-5">
-  <h1 class="text-center ">You booked the table number <%= @table.number_of_table %></h1>
-  <h3 class="text-center" style="font-weight: 400"> Add whatchouwant to the cart </h3>
-</div>
-<div class="container drinks my-5">
-    <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: #F4F4F4; height: 60px">Drinks</h2>
-    <div class="menu-item-infos mx-3 mt-4">
-      <% if @hot_drinks.present? %>
-        <h4>Hot Drinks</h4>
-        <ul>
-          <% @hot_drinks.each do |hot_drink|%>
-            <li class="d-flex justify-content-between">
-              <p><%= hot_drink.item_name%></p>
-              <p><%= humanized_money_with_symbol(hot_drink.price) %></p>
-              <div class="form">
-                <%= simple_form_for [@order, @order_item], remote: true, html: {class: "form-inline"} do |f| %>
-                  <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
-                  <%= f.input :menu_item_id, as: :hidden, input_html: {value: hot_drink.id} %>
-                  <%= f.button :submit, "add", class: 'btn btn-light'%>
-                <% end %>
-              </div>
-              <%#= render 'orders/minus_plus_button' %>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-
-      <% if @beers.present? %>
-        <h4>Beers</h4>
-        <ul>
-          <% @beers.each do |beer|%>
-            <li class="d-flex justify-content-between">
-              <p><%= beer.item_name %></p>
-              <p><%= humanized_money_with_symbol(beer.price) %></p>
-              <div class="form">
-                <%= simple_form_for [@order, @order_item], remote: true, html: {class: "form-inline"} do |f| %>
-                  <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
-                  <%= f.input :menu_item_id, as: :hidden, input_html: {value: beer.id} %>
-                  <%= f.button :submit, "add", class: 'btn btn-light'%>
-                <% end %>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-
-      <% if @wines.present? %>
-      <h4>Wines</h4>
-        <ul>
-          <% @wines.each do |wine|%>
-            <li class="d-flex justify-content-between">
-              <p><%= wine.item_name %></p>
-              <p><%= humanized_money_with_symbol(wine.price) %></p>
-              <div class="form">
-                <%= simple_form_for [@order, @order_item], remote: true, html: {class: "form-inline"} do |f| %>
-                  <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
-                  <%= f.input :menu_item_id, as: :hidden, input_html: {value: wine.id} %>
-                  <%= f.button :submit, "add", class: 'btn btn-light'%>
-                <% end %>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-<!--       <%# @drinks_category.each do |drink_category| %>
-        <%# @restaurant.menu_items.each do |menu_item| %>
-          <%# if menu_item.category == drink_category %>
-            <h4><%#= drink_category %></h4>
-            <ul>
-              <%# @restaurant.menu_items.each do |menu_item| %>
-                <%# if menu_item.category == drink_category %>
-                  <li class="d-flex justify-content-between">
-                    <p><%#= menu_item.item_name %></p>
-                  </li>
-                <%# end %>
-              <%# end %>
-            </ul>
-          <%# end %>
-          <%# break if menu_item.category == drink_category %>
-        <%# end %>
-      <%# end %> -->
-
-</div>
-<div class="container food my-5">
-    <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: #F4F4F4; height: 60px">Food</h2>
-    <div class="menu-item-infos mx-3 mt-4">
-      <% if @starters.present? %>
-        <h4>Starters</h4>
+<% if @order.status == "paid" %>
+ <%= render "pages/thank_you" %>
+<% else %>
+  <div class="container mt-5">
+    <h1 class="text-center ">Welcome at: <%= @table.restaurant.name %></h1>
+    <h3 class="text-center" style="font-weight: 400"> Enjoy your time! </h3>
+  </div>
+  <div class="container drinks my-5">
+      <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: #F4F4F4; height: 60px">Drinks</h2>
+      <div class="menu-item-infos mx-3 mt-4">
+        <% if @hot_drinks.present? %>
+          <h4>Hot Drinks</h4>
           <ul>
-            <% @starters.each do |starter|%>
+            <% @hot_drinks.each do |hot_drink|%>
               <li class="d-flex justify-content-between">
-                <p><%= starter.item_name %></p>
-                <p><%= humanized_money_with_symbol(starter.price) %></p>
+                <p><%= hot_drink.item_name%> - <strong><%= humanized_money_with_symbol(hot_drink.price / 100) %></strong></p>
                 <div class="form">
                   <%= simple_form_for [@order, @order_item], remote: true, html: {class: "form-inline"} do |f| %>
-                    <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
-                    <%= f.input :menu_item_id, as: :hidden, input_html: {value: starter.id} %>
+                    <%= f.input :quantity, label: false, collection: 1..5 %>
+                    <%= f.input :menu_item_id, as: :hidden, input_html: {value: hot_drink.id} %>
+                    <%= f.button :submit, "add", class: 'btn btn-light'%>
+                  <% end %>
+                </div>
+                <%#= render 'orders/minus_plus_button' %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if @beers.present? %>
+          <h4>Beers</h4>
+          <ul>
+            <% @beers.each do |beer|%>
+              <li class="d-flex justify-content-between">
+                <p><%= beer.item_name %> - <strong><%= humanized_money_with_symbol(beer.price / 100) %></strong></p>
+                <div class="form">
+                  <%= simple_form_for [@order, @order_item], remote: true, html: {class: "form-inline"} do |f| %>
+                    <%= f.input :quantity, label: false, collection: 1..5 %>
+                    <%= f.input :menu_item_id, as: :hidden, input_html: {value: beer.id} %>
                     <%= f.button :submit, "add", class: 'btn btn-light'%>
                   <% end %>
                 </div>
               </li>
             <% end %>
           </ul>
-      <% end %>
+        <% end %>
 
-      <% if @main_dishes.present? %>
-      <h4>Main Dishes</h4>
-        <ul>
-          <% @main_dishes.each do |main_dishe|%>
-            <li class="d-flex justify-content-between">
-              <p><%= main_dishe.item_name %></p>
-              <p><%= humanized_money_with_symbol(main_dishe.price) %></p>
-              <div class="form">
-                <%= simple_form_for [@order, @order_item], remote: true, html: {class: "form-inline"} do |f| %>
-                  <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
-                  <%= f.input :menu_item_id, as: :hidden, input_html: {value: main_dishe.id} %>
-                  <%= f.button :submit, "add", class: 'btn btn-light'%>
-                <% end %>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-
-      <% if @desserts.present? %>
-      <h4>Desserts</h4>
-        <ul>
-          <% @desserts.each do |dessert|%>
-            <li class="d-flex justify-content-between">
-              <p><%= dessert.item_name %></p>
-              <p><%= humanized_money_with_symbol(dessert.price) %></p>
-              <div class="form">
-                <%= simple_form_for [@order, @order_item], remote: true, html: {class: "form-inline"} do |f| %>
-                  <%= f.input :quantity, label: false, input_html: { min: 0, max: 10 }%>
-                  <%= f.input :menu_item_id, as: :hidden, input_html: {value: dessert.id} %>
-                  <%= f.button :submit, "add", class: 'btn btn-light'%>
-                <% end %>
-              </div>
-            </li>
-          <% end %>
-        </ul>
-      <% end %>
-    </div>
-<!--       <%# @food_category.each do |food_category| %>
-        <%# @restaurant.menu_items.each do |menu_item| %>
-          <%# if menu_item.category == food_category %>
-            <h4><%#= food_category %></h4>
-            <ul>
-              <%# @restaurant.menu_items.each do |menu_item| %>
-                <%# if menu_item.category == food_category %>
-                  <li><p><%#= menu_item.item_name %></p></li>
-                <%# end %>
-              <%# end %>
-            </ul>
-          <%# end %>
-          <%# break if menu_item.category == food_category %>
-        <%# end %>
-      <%# end %> -->
-</div>
-<div class="container order-item">
-
-
-</div>
-<div id="pending">
-  <% if @order_items.where(status: "pending").present? %>
-    <div class="container drinks my-5" style="background-color: #F4F4F4;">
-      <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: #F4F4F4; height: 60px">Pending Orders</h2>
-        <div class="menu-item-infos px-3 py-4">
+        <% if @wines.present? %>
+        <h4>Wines</h4>
           <ul>
-            <% @order.order_items.each do |order_item| %>
-              <% if order_item.status == "pending" %>
-                <li>
-                    <%= order_item.menu_item.item_name %>
-                    - <%= order_item.quantity %>X
-                    - <%= order_item.total_price %> €
-                    | <%= link_to "Remove", order_item_path(order_item), method: :delete, remote: :true  %>
-                </li>
-              <% end %>
-            <% end %>
-          </ul>
-          <%= link_to "Validate your order", validate_order_path(@order), class: "btn btn-warning", method: :patch, remote: true %>
-        </div>
-    </div>
-<% end  %>
-</div>
-<% if  @order_items.where(status: "sent").present? %>
-  <div class="container drinks my-5" style="background-color: #F4F4F4 !important;">
-    <h2 id="ordered" class="text-center d-flex justify-content-center align-items-center" style="background-color: #F4F4F4; height: 60px">Your basket</h2>
-      <div class="menu-item-infos px-3 py-4">
-        <ul>
-          <% @order.order_items.each do |order_item| %>
-            <% if order_item.status == "sent" %>
-              <li>
-                  <%= order_item.menu_item.item_name %>
-                  - <%= order_item.quantity %>x
-                    <%= order_item.total_price %> €
+            <% @wines.each do |wine|%>
+              <li class="d-flex justify-content-between">
+                <p><%= wine.item_name %> - <strong><%= humanized_money_with_symbol(wine.price / 100) %></strong></p>
+                <div class="form">
+                  <%= simple_form_for [@order, @order_item], remote: true, html: {class: "form-inline"} do |f| %>
+                    <%= f.input :quantity, label: false, collection: 1..5 %>
+                    <%= f.input :menu_item_id, as: :hidden, input_html: {value: wine.id} %>
+                    <%= f.button :submit, "add", class: 'btn btn-light'%>
+                  <% end %>
+                </div>
               </li>
             <% end %>
-          <% end %>
-        </ul>
-         <%= link_to "Pay Now", order_new_payment_path(@order), class: "btn btn-warning" %>
+          </ul>
+        <% end %>
       </div>
+  <!--       <%# @drinks_category.each do |drink_category| %>
+          <%# @restaurant.menu_items.each do |menu_item| %>
+            <%# if menu_item.category == drink_category %>
+              <h4><%#= drink_category %></h4>
+              <ul>
+                <%# @restaurant.menu_items.each do |menu_item| %>
+                  <%# if menu_item.category == drink_category %>
+                    <li class="d-flex justify-content-between">
+                      <p><%#= menu_item.item_name %></p>
+                    </li>
+                  <%# end %>
+                <%# end %>
+              </ul>
+            <%# end %>
+            <%# break if menu_item.category == drink_category %>
+          <%# end %>
+        <%# end %> -->
+
   </div>
+  <div class="container food my-5">
+      <h2 class="text-center d-flex justify-content-center align-items-center" style="background-color: #F4F4F4; height: 60px">Food</h2>
+      <div class="menu-item-infos mx-3 mt-4">
+        <% if @starters.present? %>
+          <h4>Starters</h4>
+            <ul>
+              <% @starters.each do |starter|%>
+                <li class="d-flex justify-content-between">
+                  <p><%= starter.item_name %> - <strong><%= humanized_money_with_symbol(starter.price / 100) %></strong></p>
+                  <div class="form">
+                    <%= simple_form_for [@order, @order_item], remote: true, html: {class: "form-inline"} do |f| %>
+                      <%= f.input :quantity, label: false, collection: 1..5 %>
+                      <%= f.input :menu_item_id, as: :hidden, input_html: {value: starter.id} %>
+                      <%= f.button :submit, "add", class: 'btn btn-light'%>
+                    <% end %>
+                  </div>
+                </li>
+              <% end %>
+            </ul>
+        <% end %>
+
+        <% if @main_dishes.present? %>
+        <h4>Main Dishes</h4>
+          <ul>
+            <% @main_dishes.each do |main_dishe|%>
+              <li class="d-flex justify-content-between">
+                <p><%= main_dishe.item_name %> - <strong><%= humanized_money_with_symbol(main_dishe.price / 100) %></strong></p>
+                <div class="form">
+                  <%= simple_form_for [@order, @order_item], remote: true, html: {class: "form-inline"} do |f| %>
+                    <%= f.input :quantity, label: false, collection: 1..5 %>
+                    <%= f.input :menu_item_id, as: :hidden, input_html: {value: main_dishe.id} %>
+                    <%= f.button :submit, "add", class: 'btn btn-light'%>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if @desserts.present? %>
+        <h4>Desserts</h4>
+          <ul>
+            <% @desserts.each do |dessert|%>
+              <li class="d-flex justify-content-between">
+                <p><%= dessert.item_name %> - <strong><%= humanized_money_with_symbol(dessert.price / 100) %></strong></p>
+                <div class="form">
+                  <%= simple_form_for [@order, @order_item], remote: true, html: {class: "form-inline"} do |f| %>
+                    <%= f.input :quantity, label: false, collection: 1..5 %>
+                    <%= f.input :menu_item_id, as: :hidden, input_html: {value: dessert.id} %>
+                    <%= f.button :submit, "add", class: 'btn btn-light'%>
+                  <% end %>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+  <!--       <%# @food_category.each do |food_category| %>
+          <%# @restaurant.menu_items.each do |menu_item| %>
+            <%# if menu_item.category == food_category %>
+              <h4><%#= food_category %></h4>
+              <ul>
+                <%# @restaurant.menu_items.each do |menu_item| %>
+                  <%# if menu_item.category == food_category %>
+                    <li><p><%#= menu_item.item_name %></p></li>
+                  <%# end %>
+                <%# end %>
+              </ul>
+            <%# end %>
+            <%# break if menu_item.category == food_category %>
+          <%# end %>
+        <%# end %> -->
+  </div>
+  <div class="container order-item">
+
+
+  </div>
+  <div id="pending">
+    <% if @order_items.where(status: "pending").present? %>
+      <div class="container drinks my-5" style="background-color: #F4F4F4;">
+        <h2 class="text-center d-flex justify-content-center align-items-center mb-0" style="background-color: #F4F4F4; height: 60px">Pending Orders</h2>
+          <div class="menu-item-infos px-3 py-4">
+            <ul class="list-inline">
+              <% @order.order_items.each do |order_item| %>
+                <% if order_item.status == "pending" %>
+                  <li>
+                      Your ordered: <strong><%= order_item.menu_item.item_name %></strong>
+                      - <%= order_item.quantity %>X -
+                      for: <%= humanized_money_with_symbol(order_item.price_cents.to_f / 100) %>
+                      | <%= link_to "Remove", order_item_path(order_item), method: :delete, remote: :true  %>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+            <%= link_to "Validate your order", validate_order_path(@order), class: "btn btn-warning", method: :patch, remote: true %>
+          </div>
+      </div>
+  <% end  %>
+  </div>
+  <% if  @order_items.where(status: "sent").present? %>
+    <div class="container drinks my-5" style="background-color: #F4F4F4 !important;">
+      <h2 id="ordered" class="text-center d-flex justify-content-center align-items-center mb-0" style="background-color: #F4F4F4; height: 60px">Your basket</h2>
+        <div class="menu-item-infos px-3 py-4">
+          <ul class="list-inline">
+            <% @bill = [] %>
+              <% @order.order_items.each do |order_item| %>
+                <% if order_item.status == "sent" %>
+                  <% @bill << order_item.price_cents.to_f %>
+                  <li>
+                      <strong><%= order_item.menu_item.item_name %></strong>
+                      for: <%= humanized_money_with_symbol(order_item.price_cents.to_f / 100) %>
+                  </li>
+                <% end %>
+              <% end %>
+          </ul>
+            <p>Total Bill: <strong><%= humanized_money_with_symbol(@bill.sum / 100) %></strong></p>
+          <%= link_to "Pay Now", order_new_payment_path(@order), class: "btn btn-warning" %>
+        </div>
+    </div>
+  <% end %>
 <% end %>

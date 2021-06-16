@@ -1,7 +1,7 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update]
   skip_before_action :authenticate_user!, only: [:index, :show]
-  
+
   def index
     @time_slots = time_slots
     if params[:query].present?
@@ -34,6 +34,12 @@ class RestaurantsController < ApplicationController
 
   def show
     @bookings = Booking.all
+    @starters = @restaurant.starters
+    @main_dishes = @restaurant.main_dishes
+    @desserts = @restaurant.desserts
+    @hot_drinks = @restaurant.hot_drinks
+    @beers = @restaurant.beers
+    @wines = @restaurant.wines
   end
 
   def favoritize

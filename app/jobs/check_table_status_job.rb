@@ -3,6 +3,9 @@ class CheckTableStatusJob < ApplicationJob
 
   def perform(table_id)
     @table = Table.find(table_id)
-    @table.update(status: "booked") if @table.status == "available"
+    if @table.status == "available"
+      @table.update(status: "booked")
+      @table.bookings.where(status: "booked").update(status: "done")
+    end
   end
 end
