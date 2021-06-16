@@ -122,5 +122,10 @@
     gap: 25px;
     justify-content: center;
     justify-items: center;
+    .left {
+      p {
+        text-align: center;
+      }
+    }
   }
 }
