@@ -12,8 +12,8 @@
 
     <!-- Filter -->
     <div class="restaurant-cards pr-5 pl-0 col-lg-6 col-md-12 col-12-sm">
-      <div class="form-container d-flex">
-          <%= form_tag restaurants_path, method: :get, class: "form-inline my-4" do %>
+      <div class="form-container">
+          <%= form_tag restaurants_path, method: :get, class: "index-resto-form " do %>
           <%= text_field_tag :query,
             params[:query],
             class: "form-control",

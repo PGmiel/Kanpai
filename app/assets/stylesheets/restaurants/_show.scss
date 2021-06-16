@@ -4,6 +4,7 @@
   height: 50vh;
   text-align: center;
   padding-top: 40vh;
+  box-shadow: 0 0 1em rgba(0,0,0,0.48);
   .info-banner {
     width: 75%;
     // position: absolute;
@@ -53,7 +54,9 @@
 
 
 .restaurant-show-menu {
-  margin-top: 8em;
+  margin-top: 5em;
+  background-color: $white;
+  padding: 40px 40px;
   h1 {
     border-bottom: 1px solid $dark-green;
   }
@@ -62,8 +65,7 @@
 .reviews-restaurant {
   height: auto;
   width: 100%;
-  background-color: $light-gray;
-  border-bottom: 11px solid $white;
+  // background-color: $light-gray;
 }
 
 .add-review {

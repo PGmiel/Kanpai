@@ -9,9 +9,10 @@
 .form-container {
   display: flex;
   justify-content: center;
+  margin: 2.5em;
 }
 
-.banner-form {
+.index-resto-form {
   display: flex !important;
   & input {
     height: calc(1.5em + 0.75rem + 2px);
