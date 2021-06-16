@@ -38,24 +38,25 @@
     <div id="previous" class='d-none' data-tab-target='tabs'>
       <div class="container container-booking">
         <% @bookings.last(8).each do |booking| %>
-              <% if booking.status != "booked" %>
-          <div class="card-booking">
-          <img src='<%= booking.table.restaurant.photo_url %>'>
-            <div class="card-booking-info">
-              <% if booking.user_id == current_user.id  %>
-               
-                    <%= " You have been to " %> 
-                    <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
-                    <%#= booking.status %>
-                    <h1><%= booking.table.restaurant.name %></h1>
+          <%= link_to restaurant_path(booking.table.restaurant) do %>
+            <% if booking.status != "booked" %>
+              <div class="card-booking">
+                <img src='<%= booking.table.restaurant.photo_url %>'>
+                  <div class="card-booking-info">
+                    <% if booking.user_id == current_user.id %>
+                      <%= " You have been to " %> 
+                      <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
+                      <%#= booking.status %>
+                     <h1><%= booking.table.restaurant.name %></h1>
                       <p>
                         <%=booking.starts_at.strftime("on %B %d, %Y")%><br>
                         <%= booking.table.restaurant.address %>
                       </p>
                     <%#= booking.table.id %>
-              <% end %>  
+                  <% end %>  
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
@@ -63,18 +64,20 @@
     <div id="favourite" class='d-none' data-tab-target='tabs'>
       <div class="container container-booking">
         <%current_user.all_favorites.each do |favorite| %>
+          <%= link_to restaurant_path(favorite.favoritable) do %>
             <div class="card-booking">
               <img src='<%= favorite.favoritable.photo_url %>'>
                 <div class="card-booking-info">
                     <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
                     <%#= booking.status %>
                     <h1><%= favorite.favoritable.name %></h1>
-                      <p> 
-                        <%= favorite.favoritable.address %>
-                      </p>
+                    <p> 
+                      <%= favorite.favoritable.address %>
+                    </p>
                     <%#= booking.table.id %>
                 </div>
             </div>
+          <% end %>
         <% end %>
       </div>
     </div>
