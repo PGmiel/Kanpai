@@ -1,3 +1,57 @@
+.banner-show-restaurant {
+  background-size: cover;
+  background-position: center;
+  height: 50vh;
+  text-align: center;
+  padding-top: 40vh;
+  .info-banner {
+    width: 75%;
+    // position: absolute;
+    // left: 116px;
+    // bottom: -5px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .info-left {
+      h1{
+        margin-bottom: 0px;
+        color: $white !important;
+        text-align: start;
+      }
+      p {
+        color: $white !important;
+        margin: 0px;
+        text-align: start;
+      }
+    }
+  }
+}
+
+
+.info-bottom {
+    width: 75%;
+    margin: 0px auto;
+    margin-top: 2em;
+    display: flex;
+    justify-content: space-between;
+    .right {
+      border-radius: 0.6875em;
+      height: 1.75em;
+      width: 10.7em;
+      p {
+        margin-bottom: 0px;
+        text-align: center;
+      }
+    }
+    .left{
+      p {
+        margin-bottom: 0px;
+      }
+    }
+  }
+
+
 .restaurant-show-menu {
   margin-top: 8em;
   h1 {
@@ -6,7 +60,7 @@
 }
 
 .reviews-restaurant {
-  height: 25em;
+  height: auto;
   width: 100%;
   background-color: $light-gray;
   border-bottom: 11px solid $white;
@@ -29,4 +83,44 @@
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
+}
+
+.cards-reviews {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin: 20px 40px;
+}
+
+.card-reviews {
+  height: 11.8125em;
+}
+
+@media (min-width: 100px) and (max-width: 630px) {
+  .cards-reviews {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+  }
+  .banner-show-restaurant {
+    padding-top: 17vh;
+    .info-banner {
+      display: grid;
+      gap: 25px;
+      justify-content: center;
+      .info-left {
+        h1 {
+          text-align: center;
+        }
+        p {
+          text-align: center;
+        }
+      }
+    }
+  }
+  .info-bottom {
+    display: grid;
+    gap: 25px;
+    justify-content: center;
+    justify-items: center;
+  }
 }
