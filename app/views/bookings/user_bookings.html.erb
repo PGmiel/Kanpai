@@ -17,15 +17,14 @@
               <img src='<%= booking.table.restaurant.photo_url %>'>
                 <div class="card-booking-info">
                   <% if booking.user_id == current_user.id  %>
-
-                    <%= " You booked a table at" %>
+                    <p><%= " You booked a table at" %></p>
                     <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
                     <%#= booking.status %>
                     <h1><%=booking.table.restaurant.name %></h1>
-                      <p>
-                        <%="When: #{booking.starts_at.strftime("%B %dth, %Y at %H:%M")}"%><br>
-                        <%="Address: #{booking.table.restaurant.address}" %>
-                      </p>
+                    <p>
+                      <%="When: #{booking.starts_at.strftime("%B %dth, %Y at %H:%M")}"%><br>
+                      <%="Address: #{booking.table.restaurant.address}" %>
+                    </p>
                     <%#= booking.table.id %>
                   <% end %>
                 </div>
