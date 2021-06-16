@@ -6,6 +6,24 @@
   height: 100vh;
 }
 
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.banner-form {
+  display: flex !important;
+  & input {
+    height: calc(1.5em + 0.75rem + 2px);
+    margin: 0;
+    padding: 0 20px;
+  }
+}
+
+.banner-form > .btn {
+  padding: 0 !important;
+}
+
 // .cards {
 //   flex-grow: 1;
 //   display: grid;
