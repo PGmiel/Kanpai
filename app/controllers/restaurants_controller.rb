@@ -40,6 +40,8 @@ class RestaurantsController < ApplicationController
     @hot_drinks = @restaurant.hot_drinks
     @beers = @restaurant.beers
     @wines = @restaurant.wines
+    @time_slots = time_slots
+    @booking = Booking.new
   end
 
   def favoritize

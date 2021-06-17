@@ -10,10 +10,12 @@
         <p><%="#{@restaurant.average_rating.ceil(1)}/5 - #{@restaurant.reviews.count} reviews"%></p>
       <% end %>
     </div>
-    <div class="info-right">
-      <button type="button" class="button-booking-large">
+      <div class="info-right">
+        <%= render "modal" %>
+     <!--  <button type="button" class="button-booking-large">
         book a table here
-      </button>
+      </button> -->
+      </div>
     </div>
   </div>
 </div>
@@ -184,4 +186,30 @@
     </button>
   </div>
 </div>
-
+<!-- Modal -->
+<div class="card-container">
+  <div class="modal fade" id="restaurant-modal-<%= @restaurant.id %>" tabindex="-1" aria-labelledby="restaurant-modal-<%= @restaurant.id %>-label" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <!-- <h5 class="modal-title card-content" id="restaurant-modal-<%= @restaurant.id %>-label">Book a table</h5> -->
+          <div class="card-img text-center">
+            <h3>Book a table</h3>
+            <img src='<%= @restaurant.photo_url %>' alt='bar'>
+          </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body form-row">
+          <%= simple_form_for [@restaurant, @booking] do |f| %>
+            <%= f.input :starts_at, placeholder: 'Which date?', label: false, as: :string, required: true, input_html: {class: "datepicker my-3"} %>
+            <%= f.input :ends_at, label: false, prompt: 'What time?', as: :select, collection: @time_slots, required: true, input_html: {class: "my-3"} %>
+            <%= f.input :number_of_customers, label: false, placeholder: 'How many persons?', as: :integer, input_html: { min: '0', max: '25', step: '1', class: "my-3"} %>
+            <%= f.submit "Submit booking", class: "btn btn-warning" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
