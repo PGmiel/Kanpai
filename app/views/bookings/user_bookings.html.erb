@@ -11,8 +11,8 @@
    <div id="coming"  data-tab-target='tabs'>
       <div class="container container-booking">
         <% @bookings.each do |booking| %>
-          <%= link_to restaurant_path(booking.table.restaurant) do %>
-            <% if booking.status == "booked" %>
+          <% if booking.status == "booked" %>
+            <%= link_to restaurant_path(booking.table.restaurant) do %>
               <div class="card-booking">
               <img src='<%= booking.table.restaurant.photo_url %>'>
                 <div class="card-booking-info">
@@ -37,8 +37,8 @@
     <div id="previous" class='d-none' data-tab-target='tabs'>
       <div class="container container-booking">
         <% @bookings.last(8).each do |booking| %>
-          <%= link_to restaurant_path(booking.table.restaurant) do %>
-            <% if booking.status != "booked" %>
+          <% if booking.status != "booked" %>
+            <%= link_to restaurant_path(booking.table.restaurant) do %>
               <div class="card-booking">
                 <img src='<%= booking.table.restaurant.photo_url %>'>
                   <div class="card-booking-info">
