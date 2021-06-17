@@ -71,9 +71,10 @@ form select, form input{
   color: $dark-green;
 }
 
-form input[type = text], form input[type = number],
-form input::placeholder, select{color: #red;}
-form input::prompt, select{color: #blue;}
+form input[type = text]
+form input[type = number]{
+  color: $dark-green;
+}
 form input[type = submit]{
   color: $white;
   background: $dark-green;
