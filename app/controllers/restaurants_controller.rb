@@ -25,7 +25,7 @@ class RestaurantsController < ApplicationController
 
   def time_slots
     times_array = []
-    (17..23).each do |n|
+    (10..23).each do |n|
     times_array << "#{n}:00"
     times_array << "#{n}:30"
     end

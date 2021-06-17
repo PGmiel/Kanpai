@@ -1,0 +1,17 @@
+.payment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  margin: 20vh 0;
+}
+
+@media (min-width: 100px) and (max-width: 500px) {
+  .payment h1 {
+    font-size: 1.68em;
+    text-align: center;
+  }
+  .payment p {
+    text-align: center;
+  }
+}
