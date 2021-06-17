@@ -44,7 +44,7 @@
         <ul>
           <% @hot_drinks.each do |hot_drink|%>
             <li class="d-flex justify-content-between">
-              <p><%= hot_drink.item_name%></p>
+              <p><%= hot_drink.item_name%> - <strong><%= humanized_money_with_symbol(hot_drink.price / 100) %></strong></p>
               <%#= render 'orders/minus_plus_button' %>
             </li>
           <% end %>
@@ -56,7 +56,7 @@
         <ul>
           <% @beers.each do |beer|%>
             <li class="d-flex justify-content-between">
-              <p><%= beer.item_name %></p>
+              <p><%= beer.item_name%> - <strong><%= humanized_money_with_symbol(beer.price / 100) %></strong></p>
             </li>
           <% end %>
         </ul>
@@ -67,7 +67,7 @@
         <ul>
           <% @wines.each do |wine|%>
             <li class="d-flex justify-content-between">
-              <p><%= wine.item_name %></p>
+              <p><%= wine.item_name%> - <strong><%= humanized_money_with_symbol(wine.price / 100) %></strong></p>
             </li>
           <% end %>
         </ul>
@@ -82,7 +82,7 @@
           <ul>
             <% @starters.each do |starter|%>
               <li class="d-flex justify-content-between">
-                <p><%= starter.item_name %></p>
+                <p><%= starter.item_name%> - <strong><%= humanized_money_with_symbol(starter.price / 100) %></strong></p>
               </li>
             <% end %>
           </ul>
@@ -93,7 +93,7 @@
         <ul>
           <% @main_dishes.each do |main_dishe|%>
             <li class="d-flex justify-content-between">
-              <p><%= main_dishe.item_name %></p>
+              <p><%= main_dishe.item_name%> - <strong><%= humanized_money_with_symbol(main_dishe.price / 100) %></strong></p>
             </li>
           <% end %>
         </ul>
@@ -104,7 +104,7 @@
         <ul>
           <% @desserts.each do |dessert|%>
             <li class="d-flex justify-content-between">
-              <p><%= dessert.item_name %></p>
+              <p><%= dessert.item_name%> - <strong><%= humanized_money_with_symbol(dessert.price / 100) %></strong></p>
             </li>
           <% end %>
         </ul>
