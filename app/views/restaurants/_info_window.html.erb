@@ -9,7 +9,7 @@
       <p><%= restaurant.address.capitalize %></p>
 
     <div id="heart-popup">
-      <%= link_to restaurant_favoritize_path(restaurant), method: :post do %>
+      <%= link_to restaurant_favoritize_path(restaurant), method: :post, remote: true do %>
         <%if current_user %>
           <% if current_user.favorited?(restaurant) %>
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
