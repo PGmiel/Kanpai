@@ -17,7 +17,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new
     @booking.starts_at = starts_at
     @booking.ends_at = ends_at
-    @booking.duration = booking_params[:duration]
+    # @booking.duration = booking_params[:duration]
     @booking.number_of_customers = booking_params[:number_of_customers]
     @restaurant = Restaurant.find(params[:restaurant_id])
     table = @restaurant.find_table(@booking.starts_at, @booking.ends_at, @booking.number_of_customers)
