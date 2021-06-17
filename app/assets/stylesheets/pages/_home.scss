@@ -18,13 +18,10 @@
   font-weight: bolder;
   text-shadow: 0 0 10px rgba(0,0,0,0.7);
   margin: 20px;
-  // margin-top: 100px;
-  // margin-bottom: 500px;
-
+  transition: 250ms;
+  transition-timing-function: ease-in;
    &:hover {
-      color: $pink;
-      transform: scale(1.2);
-      transition: transform .2s;
+      transform: scale(1.1);
   }
   a {
    text-decoration: none;
@@ -32,6 +29,7 @@
    &:hover{
     text-decoration: none;
     color: $pink;
+    transition: 200ms;
    }
   }
 }
