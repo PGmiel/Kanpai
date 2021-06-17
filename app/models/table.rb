@@ -11,8 +11,8 @@ class Table < ApplicationRecord
     @table = self
     @table_bookings = @table.bookings
     @check_booking = @table_bookings.detect do |table_booking|
-      (table_booking.starts_at > DateTime.now) &&
-      (table_booking.starts_at < DateTime.now.advance(minutes: 30))
+      (table_booking.starts_at - 2.hours > DateTime.now) &&
+      (table_booking.starts_at - 2.hours < DateTime.now.advance(minutes: 30))
     end
     @check_booking
   end
