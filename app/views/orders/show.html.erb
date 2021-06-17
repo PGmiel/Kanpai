@@ -157,7 +157,6 @@
           <h2>Pending Orders</h2>
             <div class="card-infos">
               <ul class="list-inline">
-                <p>Your ordered:</p>
                 <% @order.order_items.each do |order_item| %>
                   <% if order_item.status == "pending" %>
                     <li class="text-center">
@@ -180,29 +179,31 @@
       <% end  %>
     </div>
   </div>
-  <% if  @order.order_items.where(status: "sent").present? %>
-    <div class="container-cards">
-      <h2 id="ordered">Your basket</h2>
-        <div class="cards-infos">
-          <ul class="list-inline">
-            <% @bill = [] %>
-              <% @order.order_items.each do |order_item| %>
-                <% if order_item.status == "sent" %>
-                  <% @bill << order_item.price_cents.to_f %>
-                  <li class="text-center">
-                      <strong><%= order_item.menu_item.item_name %></strong>
-                      for: <%= humanized_money_with_symbol(order_item.price_cents.to_f / 100) %>
-                  </li>
+  <div class="pending-orders-container">
+    <% if  @order.order_items.where(status: "sent").present? %>
+      <div class="container-cards">
+        <h2 id="ordered">Your basket</h2>
+          <div class="cards-infos">
+            <ul class="list-inline">
+              <% @bill = [] %>
+                <% @order.order_items.each do |order_item| %>
+                  <% if order_item.status == "sent" %>
+                    <% @bill << order_item.price_cents.to_f %>
+                    <li class="text-center">
+                        <strong><%= order_item.menu_item.item_name %></strong>
+                        for: <%= humanized_money_with_symbol(order_item.price_cents.to_f / 100) %>
+                    </li>
+                  <% end %>
                 <% end %>
-              <% end %>
-          </ul>
-          <div class="d-flex justify-content-center">
-            <p>Total Bill: <strong><%= humanized_money_with_symbol(@bill.sum / 100) %></strong></p>
+            </ul>
+            <div class="d-flex justify-content-center">
+              <p>Total Bill: <strong><%= humanized_money_with_symbol(@bill.sum / 100) %></strong></p>
+            </div>
+            <div class="d-flex justify-content-center">
+              <%= link_to "Pay Now", order_new_payment_path(@order), class: "btn btn-warning" %>
+            </div>
           </div>
-          <div class="d-flex justify-content-center">
-            <%= link_to "Pay Now", order_new_payment_path(@order), class: "btn btn-warning" %>
-          </div>
-        </div>
-    </div>
-  <% end %>
+      </div>
+    <% end %>
+  </div>
 <% end %>

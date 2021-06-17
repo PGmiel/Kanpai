@@ -45,6 +45,53 @@
   }
 }
 
+@media(min-width: 510px) and (max-width: 630px) {
+  .favorite {
+    right: 0.75em;
+    top: 22em;
+  }
+}
+
+@media(min-width: 470px) and (max-width: 514px) {
+  .favorite {
+    right: 0.75em;
+    top: 18em;
+  }
+}
+
+@media(max-width: 462px) and (max-width: 470px) {
+  .favorite {
+    right: 0.75em;
+    top: 17.5em;
+  }
+}
+
+@media(min-width: 375px) and (max-width: 462px) {
+  .favorite {
+    right: 0.75em;
+    top: 14.5em;
+  }
+}
+    
+@media(min-width: 298px)and (max-width: 375px) {
+  .favorite {
+    right: -0.25em;
+    top: 14.5em;
+  }
+}    
+
+@media(min-width: 280px)and (max-width: 298px) {
+  .favorite {
+    right: 0.75em;
+    top: 10.5em;
+  }
+}
+
+@media(max-width: 278px) {
+  .favorite {
+   display: none;
+  }
+}
 
 // .card {
 //   // background-size: cover;
