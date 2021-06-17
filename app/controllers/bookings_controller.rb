@@ -27,7 +27,7 @@ class BookingsController < ApplicationController
     if @booking.save!
       flash[:notice] = "Booking Created!"
       # CheckTableStatusJob.set(wait_until: @booking.starts_at - 2.hours).perform_later(table.id)
-      redirect_to restaurants_path
+      redirect_to bookings_path
     else
       flash[:alert] = "Issue"
       redirect_to restaurants_path
