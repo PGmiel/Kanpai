@@ -150,29 +150,35 @@
     </div>
   </div>
   <!-- Cards -->
-  <div id="pending">
-    <% if @order.order_items.where(status: "pending").present? %>
-      <div class="container-cards">
-        <h2>Pending Orders</h2>
-          <div class="card-infos">
-            <ul class="list-inline">
-              <% @order.order_items.each do |order_item| %>
-                <% if order_item.status == "pending" %>
-                  <li class="text-center">
-                      Your ordered: <strong><%= order_item.menu_item.item_name %></strong>
-                      - <%= order_item.quantity %>X -
-                      for: <%= humanized_money_with_symbol(order_item.price_cents.to_f / 100) %>
-                      | <%= link_to "Remove", order_item_path(order_item), method: :delete, remote: :true  %>
-                  </li>
+  <div class="pending-orders-container">
+    <div id="pending">
+      <% if @order.order_items.where(status: "pending").present? %>
+        <div class="container-cards">
+          <h2>Pending Orders</h2>
+            <div class="card-infos">
+              <ul class="list-inline">
+                <p>Your ordered:</p>
+                <% @order.order_items.each do |order_item| %>
+                  <% if order_item.status == "pending" %>
+                    <li class="text-center">
+                      <p>
+                        <%= order_item.quantity %>X -
+                        <strong><%= order_item.menu_item.item_name %></strong>
+                        -
+                        for: <%= humanized_money_with_symbol(order_item.price_cents.to_f / 100) %>
+                        | <%= link_to "Remove", order_item_path(order_item), method: :delete, remote: :true  %>
+                      </p>
+                    </li>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </ul>
-            <div class="d-flex justify-content-center">
-            <%= link_to "Validate your order", validate_order_path(@order), class: "btn btn-warning", method: :patch, remote: true %>
+              </ul>
+              <div class="d-flex justify-content-center">
+              <%= link_to "Validate your order", validate_order_path(@order), class: "btn btn-warning", method: :patch, remote: true %>
+              </div>
             </div>
-          </div>
-      </div>
-    <% end  %>
+        </div>
+      <% end  %>
+    </div>
   </div>
   <% if  @order.order_items.where(status: "sent").present? %>
     <div class="container-cards">
