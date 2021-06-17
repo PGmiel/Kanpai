@@ -50,7 +50,7 @@ restaurant  = Restaurant.create!(
   address: 'Mont des Arts, 1000 Bruxelles',
   website: 'https://pleinpubliek.be/',
   phone_number: '0485 97 72 05',
-  photo_url: 'https://scontent-bru2-1.xx.fbcdn.net/v/t1.6435-9/166432341_761718487861378_516644447655069420_n.jpg',
+  photo_url: 'https://www.actiefwonen.be/wp-content/uploads/2019/01/PLEINPUBLIEKIMAGEALUNE-1000x650.jpg',
   user: users.sample
   )
 
