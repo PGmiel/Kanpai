@@ -52,8 +52,9 @@
                 <%= simple_form_for [restaurant, @booking] do |f| %>
                   <%= f.input :starts_at, placeholder: 'Which date?', label: false, as: :string, required: true, input_html: {class: "datepicker"} %>
                   <%= f.input :ends_at, label: false, prompt: 'What time?', as: :select, collection: @time_slots, required: true %>
+                  <%= f.input :duration, label: false, prompt: 'End time?', as: :select, collection: {@time_slots.each do |slot| slot + 30}.map, required: false %>
                   <%= f.input :number_of_customers, label: false, placeholder: 'How many persons?', as: :integer, input_html: { min: '0', max: '25', step: '1' } %>
-                  <%= f.submit "Submit booking", class: "btn btn-warning" %>
+                  <%= f.submit "Submit booking", class: "btn btn-warning booking-submit" %>
                 <% end %>
               </div>
             </div>

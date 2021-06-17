@@ -33,6 +33,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initFlatpickr } from "../plugins/flatpickr";
 // import { initUpdateNavbarOnScroll } from '../components/navbar';
 import { loadDynamicBannerText } from '../components/banner';
+import { bookingConfirm} from '../components/card';
 
 
 document.addEventListener('turbolinks:load', () => {
@@ -40,7 +41,11 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   $(document).ready(function() {
     $(".dropdown-toggle").dropdown();
-});
+  });
+  const bookingButtons = document.querySelectorAll(".booking-submit")
+  if (bookingButtons) {
+    bookingConfirm();
+  }
   const mapElement = document.getElementById('map');
   if (mapElement) {
     initMapbox();
