@@ -72,8 +72,15 @@
     top: 14.5em;
   }
 }
+    
+@media(min-width: 298px)and (max-width: 375px) {
+  .favorite {
+    right: -0.25em;
+    top: 14.5em;
+  }
+}    
 
-@media(min-width: 280px)and (max-width: 296px) {
+@media(min-width: 280px)and (max-width: 298px) {
   .favorite {
     right: 0.75em;
     top: 10.5em;
