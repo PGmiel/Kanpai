@@ -19,30 +19,39 @@ User.destroy_all
 users = []
 puts "creating Users"
 user_1 = User.create!(
-  first_name: 'Johnny',
-  last_name: 'Bravo',
-  email: 'johnny.bravo@cn.com',
+  first_name: 'Roch',
+  last_name: 'de Vidts',
+  email: 'Roch@gmail.com',
   password: "123123",
   status_owner: 'owner'
   )
 users << user_1
 
 user_2 = User.create!(
-  first_name: 'Eric',
-  last_name: 'Ramzy',
-  email: 'eric@cn.com',
+  first_name: 'Pierre-Guillaume',
+  last_name: 'Amiel',
+  email: 'pg@gmail.com',
   password: "123123",
   status_owner: 'owner'
   )
 users << user_2
 
 user_3 = User.create!(
-  first_name: 'Test',
-  last_name: 'Test',
-  email: 'testtest@cn.com',
+  first_name: 'Kyrstin',
+  last_name: 'Legrand',
+  email: 'Kyrstin@gmail.com',
   password: "123123",
   )
 users << user_3
+
+user_4 = User.create!(
+  first_name: 'Vincent',
+  last_name: 'Herremans',
+  email: 'Vincent@gmail.com',
+  password: "123123",
+  )
+users << user_4
+
 
 puts "Creating a Restaurant"
 restaurant  = Restaurant.create!(
