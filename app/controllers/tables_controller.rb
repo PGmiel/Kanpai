@@ -26,8 +26,8 @@ class TablesController < ApplicationController
   def user_booking
     @table_bookings = @table.bookings.where(status: "booked")
     @bookings = @table_bookings.select do |table_booking|
-      (table_booking.starts_at > DateTime.now) &&
-      (table_booking.starts_at < DateTime.now.advance(minutes: 30))
+      (table_booking.starts_at - 2.hours > DateTime.now) &&
+      (table_booking.starts_at - 2.hours < DateTime.now.advance(minutes: 30))
     end
     @bookings.map { |booking| booking.user }
   end
