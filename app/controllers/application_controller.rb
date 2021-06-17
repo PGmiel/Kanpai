@@ -29,8 +29,4 @@ class ApplicationController < ActionController::Base
     stored_location_for(resource_or_scope)
   end
 
-  def default_url_options
-    { host: ENV["DOMAIN"] || "localhost:3000" }
-  end
-
 end
