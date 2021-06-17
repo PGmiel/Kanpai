@@ -6,8 +6,6 @@ class Booking < ApplicationRecord
   validates :ends_at, presence: true
   validates :starts_at, presence: true
 
-  # (Endbooking.s <= StartB or StartA >= EndB)
-
   def check_range
     @bookings = self.table.restaurant.tables.each do |table|
       table.bookings.each do |booking|

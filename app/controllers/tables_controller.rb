@@ -13,7 +13,6 @@ class TablesController < ApplicationController
       redirect_to order_path(@order)
     else
       @order = Order.create(table: @table, status: "pending")
-      p @order
       @table.update(status: "booked")
       redirect_to order_path(@order)
     end
@@ -28,7 +27,7 @@ class TablesController < ApplicationController
     @table_bookings = @table.bookings.where(status: "booked")
     @bookings = @table_bookings.select do |table_booking|
       (table_booking.starts_at > DateTime.now) &&
-        (table_booking.starts_at < DateTime.now.advance(minutes: 30))
+      (table_booking.starts_at < DateTime.now.advance(minutes: 30))
     end
     @bookings.map { |booking| booking.user }
   end

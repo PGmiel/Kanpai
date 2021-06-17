@@ -7,8 +7,8 @@
       <h1>Find a table in your favorite places !</h1>
     </div>
       <%#= link_to "See Restaurants", restaurants_path, class: "btn btn-warning" %>
-    <div class="form-container d-flex justify-content-center">
-      <%= form_tag restaurants_path, method: :get, class: "form-inline my-4" do %>
+    <div class="form-container">
+      <%= form_tag restaurants_path, method: :get, class: "banner-form" do %>
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
@@ -19,7 +19,7 @@
     </div>
   </div>
 </div>
-<div class="container cards-container">
+<div class="cards-container">
   <div class = "row homepage_cards justify-content-center">
     <!-- <div class="homepage_cards"> -->
     <div class="homepage_card col-lg col-md-4" style="background-image: url(https://images.unsplash.com/photo-1599458252573-56ae36120de1?ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdGF1cmFudCUyMHJlc2VydmVkfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60)">
@@ -39,9 +39,6 @@
     </div>
   </div>
 </div>
-<div class="blank">
 
-</div>
 
-<!-- -lg-3 col-md-6 col-12-sm -->
 

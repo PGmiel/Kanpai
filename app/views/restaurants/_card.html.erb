@@ -42,7 +42,7 @@
                 <!-- <h5 class="modal-title card-content" id="restaurant-modal-<%= restaurant.id %>-label">Book a table</h5> -->
                 <div class="card-img text-center">
                   <h3>Book a table</h3>
-                  <%= cl_image_tag restaurant.photo_url %>
+                  <img src='<%= restaurant.photo_url %>' alt='bar'>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
@@ -50,11 +50,10 @@
               </div>
               <div class="modal-body form-row">
                 <%= simple_form_for [restaurant, @booking] do |f| %>
-                  <%= f.input :starts_at, placeholder: 'Which date?', label: false, as: :string, required: true, input_html: {class: "datepicker"} %>
-                  <%= f.input :ends_at, label: false, prompt: 'What time?', as: :select, collection: @time_slots, required: true %>
-                  <%= f.input :duration, label: false, prompt: 'End time?', as: :select, collection: {@time_slots.each do |slot| slot + 30}.map, required: false %>
-                  <%= f.input :number_of_customers, label: false, placeholder: 'How many persons?', as: :integer, input_html: { min: '0', max: '25', step: '1' } %>
-                  <%= f.submit "Submit booking", class: "btn btn-warning booking-submit" %>
+                  <%= f.input :starts_at, placeholder: 'Which date?', label: false, as: :string, required: true, input_html: {class: "datepicker my-3"} %>
+                  <%= f.input :ends_at, label: false, prompt: 'What time?', as: :select, collection: @time_slots, required: true, input_html: {class: "my-3"} %>
+                  <%= f.input :number_of_customers, label: false, placeholder: 'How many persons?', as: :integer, input_html: { min: '0', max: '25', step: '1', class: "my-3"} %>
+                  <%= f.submit "Submit booking", class: "btn btn-warning" %>
                 <% end %>
               </div>
             </div>
@@ -65,7 +64,7 @@
   </div>
   <%if current_user %>
     <div class="favorite m-4 position-absolute ">
-      <%= link_to restaurant_favoritize_path(restaurant), method: :post do %>
+      <%= link_to restaurant_favoritize_path(restaurant), method: :post, remote: true do %>
         <% if current_user.favorited?(restaurant) %>
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
             <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>

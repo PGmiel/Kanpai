@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :status_owner])
   end
 
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
+  
   private
 
   def storable_location?
@@ -24,4 +28,9 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource_or_scope)
     stored_location_for(resource_or_scope)
   end
+
+  def default_url_options
+    { host: ENV["DOMAIN"] || "localhost:3000" }
+  end
+
 end

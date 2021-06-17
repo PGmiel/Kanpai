@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
   def create
     starts_at = DateTime.parse(booking_params[:starts_at]).change(hour: booking_params[:ends_at].split(':').first.to_i, min: booking_params[:ends_at].split(':').last.to_i)
     ends_at = DateTime.parse(booking_params[:starts_at]).change(hour: booking_params[:ends_at].split(':').first.to_i + 2, min: booking_params[:ends_at].split(':').last.to_i)
+
     # "ends_at"=>"22:30", "starts_at"=>"2021-06-16"
     @booking = Booking.new
     @booking.starts_at = starts_at
@@ -25,7 +26,7 @@ class BookingsController < ApplicationController
     @booking.status = "booked"
     if @booking.save!
       flash[:notice] = "Booking Created!"
-      CheckTableStatusJob.set(wait_until: @booking.starts_at).perform_later(table.id)
+      # CheckTableStatusJob.set(wait_until: @booking.starts_at - 2.hours).perform_later(table.id)
       redirect_to restaurants_path
     else
       flash[:alert] = "Issue"

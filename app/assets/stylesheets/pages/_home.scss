@@ -36,9 +36,15 @@
   }
 }
 
-.blank {
-  padding: 80px;
+.banner-form {
+  display: flex !important;
+  & input {
+    height: calc(1.5em + 0.75rem + 2px);
+    margin: 0;
+    padding: 0 20px;
+  }
 }
+
 
 .homepage-title {
   h1 {
@@ -47,5 +53,6 @@
 }
 
 .cards-container {
-  margin-top: 70px;
+  margin: 165px auto;
+  padding: 0 82px;
 }
