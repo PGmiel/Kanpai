@@ -1,0 +1,27 @@
+.container-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500vw;
+  width: 800px;
+}
+
+.additional-section {
+  width: clamp(90%, 50%, 90%);
+  padding: 1em 1em;
+  border-top: 1px solid lightgrey;
+  box-shadow: 0 0 1px rgba(0,0,0,0.1);
+  border-radius: 5px;
+}
+.container-principal {
+  display: flex;
+  justify-content: center;
+}
+
+.form-check {
+  padding-left: 0;
+}
+
+.form-check-input {
+  margin-left: -13.25rem;
+}
