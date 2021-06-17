@@ -9,7 +9,7 @@
 .form-container {
   display: flex;
   justify-content: center;
-  margin: 2.5em;
+  margin: 2.5em 0;
 }
 
 .index-resto-form {
@@ -145,7 +145,7 @@
 }
 
 
-@media (min-width: 630px) {
+@media (min-width: 630px) and (max-width: 992px) {
   html {
     font-size: 1em !important;
   }
