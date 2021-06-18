@@ -31,11 +31,11 @@
     </div>
 
     <div class="homepage_card col-lg col-md-4" style="background-image: url(https://images.unsplash.com/photo-1560508179-b2c9a3f8e92b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=668&q=80)">
-      Get inspired
+      <%= link_to "Get Inspired", root_path %>
     </div>
 
     <div class="homepage_card col-lg col-md-4" style="background-image: url(https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80)">
-      My favorites
+      <%= link_to "My bookings", bookings_path(current_user) %>
     </div>
   </div>
 </div>
