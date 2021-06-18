@@ -3,4 +3,11 @@
   bottom: 16px;
   right: 16px;
   z-index: 1000;
+  background-color: $dark-green;
+  color: $white;
+  border: none  ;
+}
+
+.alert-dismissible .close {
+  color: $white;
 }
