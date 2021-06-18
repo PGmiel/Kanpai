@@ -70,7 +70,7 @@
 
 @media (min-width: 100px) and (max-width: 500px) {
   .page-container {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     min-height: 100vh;
     grid-template-rows: auto;
@@ -78,8 +78,8 @@
 
   .menu-container {
     background: $white;
-    margin: 40px 84px;
-    padding: 40px 40px;
+    margin: 0px 0px;
+    padding: 0px 0px;
     h1 {
       color: $dark-green;
     }
@@ -87,6 +87,10 @@
       color: $dark-green;
       text-align: center;
     }
+  }
+
+  .menu-item {
+    margin-top: 0px;
   }
 
   .menu-item-to-flex {
@@ -119,10 +123,10 @@
     margin-top: 25px;
   }
   .pending-orders-container{
-    margin: 40px 84px;
+    margin: 0px 0px;
     .container-cards{
-      background: white;
-      margin: 0;
+      background: $white;
+      margin: 33px;
     }
   }
 }
