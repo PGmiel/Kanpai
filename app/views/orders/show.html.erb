@@ -20,7 +20,7 @@
             <% @hot_drinks.each do |hot_drink|%>
               <li class="menu-item-to-flex list-inline">
                 <div class="text-menu-item">
-                  <p><%= hot_drink.item_name%> - <strong><%= humanized_money_with_symbol(hot_drink.price / 100) %></strong></p>
+                  <p><strong><%= hot_drink.item_name%> - <%= humanized_money_with_symbol(hot_drink.price / 100) %></strong></p>
                 </div>
                 <div class="order-form-container">
                   <%= simple_form_for [@order, @order_item], remote: true, html: {class: "order-form"} do |f| %>
@@ -42,7 +42,7 @@
             <% @beers.each do |beer|%>
               <li class="menu-item-to-flex list-inline">
                 <div class="text-menu-item">
-                  <p><%= beer.item_name %> - <strong><%= humanized_money_with_symbol(beer.price / 100) %></strong></p>
+                  <p><strong><%= beer.item_name %> - <%= humanized_money_with_symbol(beer.price / 100) %></strong></p>
                 </div>
                 <div class="order-form-container">
                   <%= simple_form_for [@order, @order_item], remote: true, html: {class: "order-form"} do |f| %>
@@ -64,7 +64,7 @@
           <% @wines.each do |wine|%>
             <li class="menu-item-to-flex list-inline">
               <div class="text-menu-item">
-                <p><%= wine.item_name %> - <strong><%= humanized_money_with_symbol(wine.price / 100) %></strong></p>
+                <p><strong><%= wine.item_name %> - <%= humanized_money_with_symbol(wine.price / 100) %></strong></p>
               </div>
               <div class="order-form-container">
                 <%= simple_form_for [@order, @order_item], remote: true, html: {class: "order-form"} do |f| %>
@@ -90,7 +90,7 @@
           <% @starters.each do |starter|%>
             <li class="menu-item-to-flex list-inline">
               <div class="text-menu-item">
-                <p><%= starter.item_name %> - <strong><%= humanized_money_with_symbol(starter.price / 100) %></strong></p>
+                <p><strong><%= starter.item_name %> - <%= humanized_money_with_symbol(starter.price / 100) %></strong></p>
               </div>
               <div class="order-form-container">
                 <%= simple_form_for [@order, @order_item], remote: true, html: {class: "order-form"} do |f| %>
@@ -112,7 +112,7 @@
             <% @main_dishes.each do |main_dishe|%>
               <li class="menu-item-to-flex list-inline">
                 <div class="text-menu-item">
-                  <p><%= main_dishe.item_name %> - <strong><%= humanized_money_with_symbol(main_dishe.price / 100) %></strong></p>
+                  <p><strong><%= main_dishe.item_name %> - <%= humanized_money_with_symbol(main_dishe.price / 100) %></strong></p>
                 </div>
                 <div class="order-form-container">
                   <%= simple_form_for [@order, @order_item], remote: true, html: {class: "order-form"} do |f| %>
@@ -134,7 +134,7 @@
           <% @desserts.each do |dessert|%>
             <li class="menu-item-to-flex list-inline">
             <div class="text-menu-item">
-              <p><%= dessert.item_name %> - <strong><%= humanized_money_with_symbol(dessert.price / 100) %></strong></p>
+              <p><strong><%= dessert.item_name %> - <%= humanized_money_with_symbol(dessert.price / 100) %></strong></p>
             </div>
             <div class="order-form-container">
               <%= simple_form_for [@order, @order_item], remote: true, html: {class: "order-form"} do |f| %>

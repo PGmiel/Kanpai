@@ -69,8 +69,17 @@
 }
 
 @media (min-width: 100px) and (max-width: 500px) {
+  .page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    grid-template-rows: auto;
+  }
+
   .menu-container {
     background: $white;
+    margin: 40px 84px;
+    padding: 40px 40px;
     h1 {
       color: $dark-green;
     }
@@ -93,6 +102,7 @@
       color: $white;
       height: 0px;
       margin: 20px 0;
+      font-size: 1.3rem;
     }
   }
   .change-ul {
@@ -106,6 +116,7 @@
   }
   .order-form-container {
     margin-bottom: 10px;
+    margin-top: 25px;
   }
   .pending-orders-container{
     margin: 40px 84px;
