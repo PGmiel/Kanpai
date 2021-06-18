@@ -7,7 +7,7 @@ const buildMap = (mapElement) => {
   return new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11',
-    center: [50.8505, 4.3488], // starting position
+    center: [4.3488, 50.8505], // starting position
     zoom: 9 // starting zoom
   });
 };
