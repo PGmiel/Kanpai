@@ -1,5 +1,6 @@
 class OrderItemsController < ApplicationController
   skip_before_action :authenticate_user!
+
   def create
     @order = Order.find(params[:order_id])
     @menu_item = MenuItem.find(params[:order_item][:menu_item_id])
@@ -9,15 +10,13 @@ class OrderItemsController < ApplicationController
 
     if @order_item.quantity.nil?
       flash[:notice] = "wrong choice"
+    elsif @order_item.save
+      @order_item.update(status: "pending")
+      @order_item.update(price_cents: @order_item.quantity * @menu_item.price)
+      redirect_to order_path(@order, anchor: "pending")
     else
-      if @order_item.save
-        @order_item.update(status: "pending")
-        @order_item.update(price_cents: @order_item.quantity * @menu_item.price)
-        redirect_to order_path(@order, anchor: "pending")
-      else
-        flash[:notice] = "Not available"
-        redirect_to order_path(@order)
-      end
+      flash[:notice] = "Not available"
+      redirect_to order_path(@order)
     end
   end
 
