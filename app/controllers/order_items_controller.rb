@@ -6,7 +6,10 @@ class OrderItemsController < ApplicationController
     @quantity = params[:order_item][:quantity]
     @order_item = OrderItem.new(order_item_params)
     @order_item.order = @order
-    if @order_item.save
+
+    if @order_item.quantity.nil?
+      flash[:notice] = "wrong choice"
+    elsif @order_item.save
       @order_item.update(status: "pending")
       @order_item.update(price_cents: @order_item.quantity * @menu_item.price)
       redirect_to order_path(@order, anchor: "pending")
