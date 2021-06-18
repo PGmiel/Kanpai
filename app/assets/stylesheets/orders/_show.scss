@@ -60,6 +60,14 @@
   }
 }
 
+.pending-orders-container {
+  margin: 40px 84px;
+  .container-cards{
+    background: white;
+    margin: 0;
+  }
+}
+
 @media (min-width: 100px) and (max-width: 500px) {
   .menu-container {
     background: $white;
@@ -101,7 +109,6 @@
   }
   .pending-orders-container{
     margin: 40px 84px;
-    padding: 0px 0px;
     .container-cards{
       background: white;
       margin: 0;
