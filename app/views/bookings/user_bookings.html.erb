@@ -11,12 +11,12 @@
    <div id="coming"  data-tab-target='tabs'>
       <div class="container container-booking">
         <% @bookings.each do |booking| %>
-          <% if booking.status == "booked" %>
-            <%= link_to restaurant_path(booking.table.restaurant) do %>
-              <div class="card-booking">
-              <img src='<%= booking.table.restaurant.photo_url %>'>
-                <div class="card-booking-info">
-                  <% if booking.user_id == current_user.id  %>
+          <% if booking.user_id == current_user.id  %>
+            <% if booking.status == "booked" %>
+              <%= link_to restaurant_path(booking.table.restaurant) do %>
+                <div class="card-booking">
+                  <img src='<%= booking.table.restaurant.photo_url %>'>
+                  <div class="card-booking-info">
                     <p><%= " You booked a table at" %></p>
                     <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
                     <%#= booking.status %>
@@ -26,9 +26,9 @@
                       <%="Address: #{booking.table.restaurant.address}" %>
                     </p>
                     <%#= booking.table.id %>
-                  <% end %>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
@@ -37,24 +37,24 @@
     <div id="previous" class='d-none' data-tab-target='tabs'>
       <div class="container container-booking">
         <% @bookings.last(8).each do |booking| %>
-          <% if booking.status != "booked" %>
-            <%= link_to restaurant_path(booking.table.restaurant) do %>
-              <div class="card-booking">
-                <img src='<%= booking.table.restaurant.photo_url %>'>
+          <% if booking.user_id == current_user.id %>
+            <% if booking.status == "done" %>
+              <%= link_to restaurant_path(booking.table.restaurant) do %>
+                <div class="card-booking">
+                  <img src='<%= booking.table.restaurant.photo_url %>'>
                   <div class="card-booking-info">
-                    <% if booking.user_id == current_user.id %>
-                      <%= " You have been to " %>
-                      <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
-                      <%#= booking.status %>
-                     <h1><%= booking.table.restaurant.name %></h1>
-                      <p>
-                        <%=booking.starts_at.strftime("on %B %d, %Y")%><br>
-                        <%= booking.table.restaurant.address %>
-                      </p>
-                    <%#= booking.table.id %>
-                  <% end %>
+                    <%= " You have been to " %>
+                    <%# .strftime("Booked for the %d/%m/%y at %H%p") %>
+                    <%#= booking.status %>
+                   <h1><%= booking.table.restaurant.name %></h1>
+                    <p>
+                      <%=booking.starts_at.strftime("on %B %d, %Y")%><br>
+                      <%= booking.table.restaurant.address %>
+                    </p>
+                  <%#= booking.table.id %>
+                  </div>
                 </div>
-              </div>
+              <% end %>
             <% end %>
           <% end %>
         <% end %>
