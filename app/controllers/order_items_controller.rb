@@ -9,7 +9,8 @@ class OrderItemsController < ApplicationController
     @order_item.order = @order
 
     if @order_item.quantity.nil?
-      flash[:notice] = "wrong choice"
+      flash[:notice] = "Select a quantity"
+      redirect_to order_path(@order)
     elsif @order_item.save
       @order_item.update(status: "pending")
       @order_item.update(price_cents: @order_item.quantity * @menu_item.price)
